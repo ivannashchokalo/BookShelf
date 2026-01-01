@@ -1,4 +1,4 @@
-@import url('./modern-normalize.css')
+@import url('./modern-normalize.css');
 /* Common styles */
 @import url('./reset.css');
 @import url('./base.css');
@@ -8,4 +8,5 @@
 @import url('./header.css');
 @import url('./home.css');
 @import url('./modal-window.css');
+@import url('./font.css');
 
