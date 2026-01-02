@@ -1,0 +1,47 @@
+//міксіни
+
+//перед використанням у файлі треба імпортувати 
+//@use "../utils/mixins" as m; 
+//використання:
+//  @include m.назва міксіну
+
+@mixin align($dir: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// використання:
+
+// .books {
+//    @include align;
+
+//     або, якщо щось треба змінити
+//     @include align($dir: column);
+// }
+
+@mixin font($fs, $fw: null, $lh, $ls: null, $style: normal) {
+    font-size: $fs;
+
+   // line-height передаємо у пікселях 
+    line-height: $lh / $fs; 
+    letter-spacing: $ls;
+    
+    // null бо вже є у body
+    @if $fw != null {
+        font-weight: $fw;
+    }
+
+     @if $ls != null {
+        letter-spacing: $ls;
+    }
+
+    // при виході в css не буде видно якщо нормал
+    @if $style != normal {
+        font-style: $style; // дефолт від браузера
+    } 
+}
+
+
+
