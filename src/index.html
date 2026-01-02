@@ -5,22 +5,24 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book shelf</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
+  <body data-page="home">
+    <load src="./partials/header.html" />
     <main>
-      <section class="home">
-        <div class="container"></div>
+      <section class="main-section">
+        <div class="container main-section-container">
+          <div class="categories">
+            <ul class="categories-list"></ul>
+          </div>
+          <load src="./partials/support.html" />
+          <div class="books">
+            <h1 class="main-title">Best Sellers <span>Books</span></h1>
+            <ul class="books-list"></ul>
+          </div>
+        </div>
       </section>
     </main>
     <load src="./partials/modal-window.html" />
-    <script type="module" src="./home.js"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>

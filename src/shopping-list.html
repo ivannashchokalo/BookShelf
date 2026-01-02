@@ -5,21 +5,19 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping list</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body>
+  <body data-page="shopping-list">
     <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
     <main>
       <section class="shopping-list">
-        <div class="container"></div>
+        <div class="container shopping-list-container">
+          <load src="./partials/support.html" />
+          <div class="shopping-list-books">
+            <h1 class="main-title">Shopping<span>List</span></h1>
+          </div>
+        </div>
       </section>
     </main>
-    <script type="module" src="./shopping-list.html"></script>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
