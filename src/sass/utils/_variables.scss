@@ -9,6 +9,7 @@
   --card-bg-color:  #fff;
   --header-border: 1.50px solid #111;
   --accent-color: #4f2ee8;
+   --scroll-color:  #e0e0e0;
 
   [data-theme='dark'] {
   --primary-text-color: #fff;
@@ -19,5 +20,6 @@
   --card-bg-color:   #111;
   --header-border: 1.50px solid #fff;
   --accent-color: #4f2ee8;
+   --scroll-color: rgba(17, 17, 17, 0.6);
   }
 }

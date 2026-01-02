@@ -21,7 +21,7 @@
 //     @include align($dir: column);
 // }
 
-@mixin font($fs, $fw: null, $lh, $ls: null, $style: normal) {
+@mixin font($fs: 16px, $fw: null, $lh: 18px, $ls: null, $style: normal) {
     font-size: $fs;
 
    // line-height передаємо у пікселях 
