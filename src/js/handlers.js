@@ -1,5 +1,7 @@
+import { fetchAllCategories } from './books-api';
 import { STATE } from './constants';
 import { getScreenType, getTopBooks } from './helpers';
+import { renderCategories } from './render-function';
 
 export async function handleHomePageInit() {
   // призначити активною "All categories"
@@ -7,6 +9,12 @@ export async function handleHomePageInit() {
   // за бажанням можна додати каунтер в хедер до шопінг листа. Зчитати і застосувати його з локального сховища
   STATE.screenType = getScreenType();
   await getTopBooks();
+  try {
+    const categories = await fetchAllCategories();
+    renderCategories(categories);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function handleHomeResize() {
