@@ -12,6 +12,10 @@
   --scroll-color:  #e0e0e0;
   --transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
+  --support-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
+    --support-gradient: radial-gradient(183.6% 183.01% at 59.76% -23.42%,
+          var(--accent-color) 18.03%,
+          #ffffff 100%);
 
   [data-theme='dark'] {
   --primary-text-color: #fff;
@@ -25,3 +29,6 @@
    --scroll-color: rgba(17, 17, 17, 0.6);
   }
 }
+//Support component variables//
+$bp-tablet: 768px;
+$bp-desktop: 1440px;

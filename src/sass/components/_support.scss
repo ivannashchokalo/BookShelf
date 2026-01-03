@@ -1,0 +1,103 @@
+// variables 
+@use "../utils/variables" as *;
+
+// mixin
+@use "../utils/mixins" as m;
+
+.support-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 335px;
+    height: 460px;
+    padding: 24px 40px 20px;
+    border-radius: 16px;
+    background: var(--support-gradient);
+    box-shadow: var(--support-shadow);
+
+    @include m.mq($bp-tablet) {
+        height: 474px;
+    }
+
+    @include m.mq($bp-desktop) {
+        padding: 24px 40px;
+    }
+
+    .support-title {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 40px;
+
+        @include m.mq($bp-desktop) {
+            margin-bottom: 42px;
+        }
+    }
+
+    .support-paragraph {
+        font-weight: 700;
+        font-size: 22px;
+        line-height: 1.09;
+        letter-spacing: -0.04em;
+        color: #fff;
+
+        @include m.mq($bp-tablet) {
+            font-size: 24px;
+            line-height: 1.16;
+            letter-spacing: -0.96px;
+        }
+    }
+
+    .swiper-container {
+        width: 159px;
+        height: 292px;
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .support-funds-link {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .support-fund-number {
+        font-size: 14px;
+        line-height: 1.29;
+        letter-spacing: -0.04em;
+        color: #fff;
+    }
+
+    .support-swiper-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        margin: 24px auto 0;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer; 
+        background-color: #fff;
+
+        @include m.mq($bp-tablet) {
+            width: 38px;
+            height: 38px;
+        }
+    }
+
+    .swiper-button-icon {
+        width: 20px;
+        height: 20px;
+        stroke: var(--accent-color);
+    }
+
+    .partners-list {
+        display: none;
+
+        @include m.mq($bp-desktop) {
+            display: block;
+        }
+    }
+}

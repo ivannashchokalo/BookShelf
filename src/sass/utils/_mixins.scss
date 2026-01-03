@@ -11,6 +11,12 @@
   justify-content: $justify;
   align-items: $align;
 }
+//міксін для медіа-запитів//
+@mixin mq($w) {
+    @media only screen and (min-width: $w) {
+        @content;
+    }
+}
 
 // використання:
 

@@ -1,4 +1,5 @@
 import '../src/sass/main.scss';
+import { initSwiper, renderFunds } from './js/handlers.js';
 
 import { initHome } from './js/home';
 import { initShoppingList } from './js/shopping-list.js';
@@ -15,3 +16,9 @@ switch (page) {
   default:
     console.log('Unknown page');
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderFunds();
+  initSwiper();
+});

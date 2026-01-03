@@ -31,3 +31,7 @@ function getResponsiveCardsLimit() {
   };
   return limits[screenType];
 }
+
+
+
+
