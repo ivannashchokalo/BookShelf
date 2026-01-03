@@ -1,0 +1,13 @@
+@use "../utils/mixins" as m;
+
+.book-card-title {
+    margin-bottom: 4px;
+    @include m.font($fs:16px, $fw: 700, $lh: 18px);
+    text-transform: uppercase;
+    color: var(--primary-text-color);
+
+    white-space: nowrap;        /*  забороняє перенос */
+    overflow: hidden;           /*  ховає зайве */
+    text-overflow: ellipsis;    /*  додає ... */
+    max-width: 100%;
+}
