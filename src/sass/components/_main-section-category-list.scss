@@ -1,0 +1,70 @@
+@use "../utils/mixins" as m;
+
+.categories {
+    width: 335px;
+    height: 228px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        width: 8px;
+        background-color: var(--scroll-color);
+        border-radius: 12px;  
+    }
+
+    /* Firefox */
+    scrollbar-width: thin;                        
+    scrollbar-color: var(--scroll-color) transparent;
+}
+
+.categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.categories-list-button {
+    border: none;
+    background-color: transparent;
+    @include m.font($ls:  -0.02em);
+    color: var(--category-list-color);
+    line-height: 0;
+    transition: var(--transition);
+}
+
+.categories-list-button.current {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+.categories-list-button:hover,
+.categories-list-button:focus-visible,
+.categories-list-button:active {
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+@media screen and (min-width: 768px) {
+    .categories {
+        width: 337px;
+        height: 472px;
+        gap: 32px;
+    }
+
+    .categories-list-button {
+        @include m.font($fs: 18px, $lh: 24px,);
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .categories {
+        width: 356px;
+    }
+}
