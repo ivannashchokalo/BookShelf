@@ -6,8 +6,9 @@
 
 .support-wrapper {
     position: relative;
-    width: 100%;
-    max-width: 335px;
+    width: 335px;
+        max-width: 100%;
+        margin: 0 auto;
     height: 460px;
     padding: 24px 40px 20px;
     border-radius: 16px;
@@ -49,6 +50,7 @@
     .swiper-container {
         width: 159px;
         height: 292px;
+            
     }
 
     .swiper {
