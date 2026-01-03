@@ -1,13 +1,7 @@
-import { fetchAllCategories } from "./books-api";
-import { renderCategories } from "./render-function";
+import { handleHomePageInit, handleHomeResize } from './handlers';
 
-export async function initHome() {
-    try {
-        const categories = await fetchAllCategories();
-        renderCategories(categories); 
-    } catch (error) {
-        console.log(error);
-        
-    }
-
+export function initHome() {
+  document.addEventListener('DOMContentLoaded', handleHomePageInit);
 }
+
+window.addEventListener('resize', handleHomeResize);

@@ -1,3 +1,5 @@
 export const refs = {
-    categoriesList: document.querySelector('.categories-list'),
-}
+  mainBookList: document.querySelector('.main-books-list'),
+  categoriesList: document.querySelector('.categories-list'),
+};
+    
