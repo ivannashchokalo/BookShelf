@@ -25,6 +25,7 @@ import fund8 from '../img/funds/world-vision.png';
 import fund8x from '../img/funds/world-vision-2x.png';
 import fund9 from '../img/funds/sergiy-prytula.png';
 import fund9x from '../img/funds/sergiy-prytula-2x.png';
+import { scrollUp, showScrollUpBtn } from './scroll-up';
 
 
 export async function handleHomePageInit() {
@@ -146,3 +147,7 @@ export function initSwiper() {
     }
   });
 }
+//Scroll up
+
+refs.scrollUpBtn.addEventListener('click', scrollUp);
+window.addEventListener('scroll', showScrollUpBtn);

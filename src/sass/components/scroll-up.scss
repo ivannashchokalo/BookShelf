@@ -1,0 +1,32 @@
+.scroll-up {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    z-index: 8;
+
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: var(--accent-color);
+    box-shadow: 0 0 10px 3px rgba(79, 46, 232, 0.3);
+
+    transition: var(--transition);
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px 10px rgba(79, 46, 232, 0.3);
+    }
+
+    .icon-skroll-up {
+        width: 24px;
+        height: 24px;
+        fill: #fff;
+    }
+}
