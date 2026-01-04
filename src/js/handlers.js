@@ -1,11 +1,14 @@
 import { fetchAllCategories, fetchBookByCategory } from './books-api';
 import { STATE } from './constants';
 import { getScreenType, getTopBooks } from './helpers';
-import { fundsMarkup, renderBooksListByCategory, renderCategories } from './render-function';
+import {
+  fundsMarkup,
+  renderBooksListByCategory,
+  renderCategories,
+} from './render-function';
 import Swiper from 'swiper';
 import 'swiper/css';
 import { refs } from './refs';
-
 
 import fund1 from '../img/funds/save-the-children.png';
 import fund1x from '../img/funds/save-the-children-2x.png';
@@ -26,7 +29,6 @@ import fund8x from '../img/funds/world-vision-2x.png';
 import fund9 from '../img/funds/sergiy-prytula.png';
 import fund9x from '../img/funds/sergiy-prytula-2x.png';
 import { scrollUp, showScrollUpBtn } from './scroll-up';
-
 
 export async function handleHomePageInit() {
   // призначити активною "All categories"
@@ -55,7 +57,7 @@ export async function handleHomeResize() {
 
 //Support handlers//
 
- export const funds = [
+export const funds = [
   {
     title: 'Save the Children',
     url: 'https://www.savethechildren.net/what-we-do/emergencies/ukraine-crisis',
@@ -152,7 +154,6 @@ export function initSwiper() {
 refs.scrollUpBtn.addEventListener('click', scrollUp);
 window.addEventListener('scroll', showScrollUpBtn);
 
-
 export async function handleCategoryClick(e) {
   if (e.target.nodeName !== 'BUTTON') return;
   const categoryName = e.target.textContent;
@@ -169,14 +170,14 @@ export async function handleCategoryClick(e) {
     } else {
       const category = await fetchBookByCategory(categoryName);
       renderBooksListByCategory(category);
-    } 
-    
+    }
+
     if (STATE.screenType === 'mobile' || STATE.screenType === 'tablet') {
-    refs.mainBooksBlock.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }
+      refs.mainBooksBlock.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
   } catch (error) {
     console.log(error);
   }
