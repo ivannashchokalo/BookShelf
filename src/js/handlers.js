@@ -1,7 +1,7 @@
-import { fetchAllCategories } from './books-api';
+import { fetchAllCategories, fetchBookByCategory } from './books-api';
 import { STATE } from './constants';
 import { getScreenType, getTopBooks } from './helpers';
-import { fundsMarkup, renderCategories } from './render-function';
+import { fundsMarkup, renderBooksListByCategory, renderCategories } from './render-function';
 import Swiper from 'swiper';
 import 'swiper/css';
 import { refs } from './refs';
@@ -48,10 +48,10 @@ export async function handleHomeResize() {
     return;
   }
   STATE.screenType = screenType;
-  // якщо категорія не "All categories" - return
+  const currentBtn = refs.categoriesList.querySelector('.current');
+  if (currentBtn.textContent !== 'All categories') return;
   await getTopBooks();
 }
-
 
 //Support handlers//
 
@@ -151,3 +151,33 @@ export function initSwiper() {
 
 refs.scrollUpBtn.addEventListener('click', scrollUp);
 window.addEventListener('scroll', showScrollUpBtn);
+
+
+export async function handleCategoryClick(e) {
+  if (e.target.nodeName !== 'BUTTON') return;
+  const categoryName = e.target.textContent;
+
+  const prevBtn = document.querySelector('.current');
+  if (prevBtn) prevBtn.classList.remove('current');
+  e.target.classList.add('current');
+
+  STATE.screenType = getScreenType();
+
+  try {
+    if (categoryName === 'All categories') {
+      await getTopBooks();
+    } else {
+      const category = await fetchBookByCategory(categoryName);
+      renderBooksListByCategory(category);
+    } 
+    
+    if (STATE.screenType === 'mobile' || STATE.screenType === 'tablet') {
+    refs.mainBooksBlock.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+  } catch (error) {
+    console.log(error);
+  }
+}

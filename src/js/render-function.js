@@ -15,7 +15,18 @@ export function renderTopBooks(data, cardsLimit) {
       </li>`
     );
   });
-  refs.mainBookList.innerHTML = markup.join('');
+
+    // завжди новий ul
+  const newBooksList = `<ul class="main-top-books-list">${markup}</ul>`;
+
+  if (refs.mainBookList && refs.mainBookList.parentNode) {
+    refs.mainBookList.outerHTML = newBooksList;
+  } else if (refs.mainBookList) {
+    refs.mainBookList.innerHTML = markup;
+  }
+
+  refs.mainBookList = document.querySelector('.main-top-books-list');
+
 }
 
 function renderBookListCard({ _id, book_image, title, author }) {
@@ -24,6 +35,21 @@ function renderBookListCard({ _id, book_image, title, author }) {
   <h3 class="book-card-title">${title}</h3>
   <p class="book-card-author">${author}</p>
   </li>`;
+}
+
+export function renderBooksListByCategory(category) {
+  const markup = category.map(renderBookListCard).join('');
+  const newListHTML = `<ul class="main-books-list">${markup}</ul>`;
+
+  if (refs.mainTopBookList && refs.mainTopBookList.parentNode) {
+    refs.mainTopBookList.outerHTML = newListHTML;
+    refs.mainTopBookList = document.querySelector('.main-books-list');
+  } else if (refs.mainBookList && refs.mainBookList.parentNode) {
+    refs.mainBookList.outerHTML = newListHTML;
+    refs.mainBookList = document.querySelector('.main-books-list');
+  } else if (refs.mainBookList) {
+    refs.mainBookList.innerHTML = markup;
+  }
 }
 
 export function renderCategories(categories) {
