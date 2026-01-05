@@ -19,8 +19,8 @@ export function renderTopBooks(data, cardsLimit) {
 }
 
 function renderBookListCard({ _id, book_image, title, author }) {
-  return `<li class="book-card" data-id="${_id}" alt="Book cover of ${title}">
-  <img class="book-card-cover" src="${book_image}">
+  return `<li class="book-card" data-id="${_id}">
+  <img class="book-card-cover" src="${book_image}" alt="Book cover of ${title}">
   <h3 class="book-card-title">${title}</h3>
   <p class="book-card-author">${author}</p>
   </li>`;
