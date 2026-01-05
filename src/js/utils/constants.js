@@ -8,3 +8,8 @@ export const refs = {
   scrollUpBtn: document.querySelector('.scroll-up'),
   bookModal: document.querySelector('.book-modal'),
 };
+
+export const STATE = {
+  screenType: 'mobile', // "desktop", "tablet", "mobile"
+};
+
