@@ -162,12 +162,12 @@ export async function handleCategoryClick(e) {
   if (prevBtn) prevBtn.classList.remove('current');
   e.target.classList.add('current');
 
-  STATE.screenType = getScreenType();
-
   try {
     if (categoryName === 'All categories') {
+      refs.mainBookList.dataset.booklist = 'top-books';
       await getTopBooks();
     } else {
+      refs.mainBookList.dataset.booklist = 'books-by-category';
       const category = await fetchBookByCategory(categoryName);
       renderBooksListByCategory(category);
     }

@@ -15,18 +15,7 @@ export function renderTopBooks(data, cardsLimit) {
       </li>`
     );
   });
-
-    // завжди новий ul
-  const newBooksList = `<ul class="main-top-books-list">${markup}</ul>`;
-
-  if (refs.mainBookList && refs.mainBookList.parentNode) {
-    refs.mainBookList.outerHTML = newBooksList;
-  } else if (refs.mainBookList) {
-    refs.mainBookList.innerHTML = markup;
-  }
-
-  refs.mainBookList = document.querySelector('.main-top-books-list');
-
+  refs.mainBookList.innerHTML = markup.join('');
 }
 
 function renderBookListCard({ _id, book_image, title, author }) {
@@ -39,33 +28,23 @@ function renderBookListCard({ _id, book_image, title, author }) {
 
 export function renderBooksListByCategory(category) {
   const markup = category.map(renderBookListCard).join('');
-  const newListHTML = `<ul class="main-books-list">${markup}</ul>`;
-
-  if (refs.mainTopBookList && refs.mainTopBookList.parentNode) {
-    refs.mainTopBookList.outerHTML = newListHTML;
-    refs.mainTopBookList = document.querySelector('.main-books-list');
-  } else if (refs.mainBookList && refs.mainBookList.parentNode) {
-    refs.mainBookList.outerHTML = newListHTML;
-    refs.mainBookList = document.querySelector('.main-books-list');
-  } else if (refs.mainBookList) {
-    refs.mainBookList.innerHTML = markup;
-  }
+  refs.mainBookList.innerHTML = markup;
 }
 
 export function renderCategories(categories) {
-    const firstCategoryItem = `<li class="categories-list-item">
+  const firstCategoryItem = `<li class="categories-list-item">
                 <button class="categories-list-button current">All categories</button>
-              </li>`
-
-    const markup = categories.map(({ list_name }) => {
-        if (list_name) {
-            return `<li class="categories-list-item">
+              </li>`;
+  const markup = categories
+    .map(({ list_name }) => {
+      if (list_name) {
+        return `<li class="categories-list-item">
                 <button class="categories-list-button">${list_name}</button>
-              </li>`
-        }
-    }).join('');
-
-    refs.categoriesList.innerHTML = firstCategoryItem+markup;
+              </li>`;
+      }
+    })
+    .join('');
+  refs.categoriesList.innerHTML = firstCategoryItem + markup;
 }
 // Support render//
 
