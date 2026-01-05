@@ -1,3 +1,108 @@
 <header class="header">
-  <div class="container"></div>
+  <div class="container container-header">
+    <nav class="header-nav">
+      <!-- Логотип -->
+      <a class="header-logo" href="../index.html">
+        <svg class="header-logo-svg" width="24" height="24">
+          <use href="../icons/symbol-defs.svg#icon-logo"></use>
+        </svg>
+        Bookshelf
+      </a>
+
+      <!-- Desktop navigation -->
+      <div class="desktop-nav">
+        <ul class="menu-ul">
+          <li class="menu-li-home">
+            <a href="../index.html" class="menu-home">Home</a>
+          </li>
+          <li class="menu-li-shop">
+            <a href="../shopping-list.html" class="menu-shopping-list">
+              Shopping List
+              <svg class="icon-shop" width="20" height="20">
+                <use href="../icons/symbol-defs.svg#icon-uil-cart"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Theme toggle -->
+      <div class="toggle" aria-label="Theme switch"></div>
+
+            <!-- Sign up -->
+      <button class="header-btn" id="sign-up-btn">
+        Sign up
+        <svg class="btn-arrow" width="22" height="22">
+          <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
+        </svg>
+      </button>
+<!--User-->
+<div class="user-info hidden" id="user-info">
+
+</div>
+
+
+      <!-- Burger buttons -->
+      <button type="button" class="header-menu" id="menu" aria-label="Open menu"  data-modal-open>
+        <svg class="header-menu-svg" width="28" height="28">
+          <use href="../icons/symbol-defs.svg#icon-burger-menu"></use>
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        class="header-menu-close disabled"
+        id="menu-close"
+        aria-label="Close menu"
+        data-modal-close
+      >
+        <svg class="header-menu-close-svg" width="22" height="22">
+          <use href="../icons/symbol-defs.svg#icon-x-close"></use>
+        </svg>
+      </button>
+    </nav>
+  </div>
 </header>
+
+<!-- Mobile menu -->
+<div class="mobile" id="mobile-menu">
+  
+  <!-- TOP -->
+  <div class="mobile-menu">
+    <ul class="mob-menu-list">
+      <li>
+        <a class="mob-menu-link" href="../index.html">Home</a>
+      </li>
+      <li>
+        <a class="mob-menu-list-link" href="../shopping-list.html">
+          Shopping List
+          <svg class="list-svg" width="20" height="20">
+            <use href="../icons/symbol-defs.svg#icon-uil-cart"></use>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="mobile-bottom">
+    <button class="long-bth">
+      Log in
+      <svg class="btn-arrow" width="22" height="22">
+        <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
+      </svg>
+    </button>
+
+    <div class="image">
+      <img
+        class="mob-books-img"
+        srcset="../img/mob-menu/mob-menu-1x-min.png, ../img/mobile-menu/mob-menu-2x-min.png"
+        src="../img/mobile-menu/mob-menu-1x-min.png"
+        alt="Books illustration"
+        loading="lazy"
+        width="450"
+      />
+    </div>
+  </div>
+
+</div>
