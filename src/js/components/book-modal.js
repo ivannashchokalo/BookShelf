@@ -1,5 +1,7 @@
-import { fetchBookById } from './books-api';
-import { refs } from './refs';
+import { fetchBookById } from '../utils/books-api';
+import { refs } from '../utils/constants';
+
+export function initBookModal() {}
 
 export async function handleOpenBookModal(e) {
   const bookCard = e.target.closest('li.book-card');
