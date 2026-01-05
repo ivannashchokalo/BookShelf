@@ -1,9 +1,14 @@
-import { handleCategoryClick, handleHomePageInit, handleHomeResize } from './handlers';
+import { handleOpenBookModal } from './book-modal';
+import {
+  handleCategoryClick,
+  handleHomePageInit,
+  handleHomeResize,
+} from './handlers';
 import { refs } from './refs';
 
 export function initHome() {
   document.addEventListener('DOMContentLoaded', handleHomePageInit);
-  refs.categoriesList.addEventListener('click', handleCategoryClick)
+  window.addEventListener('resize', handleHomeResize);
+  refs.categoriesList.addEventListener('click', handleCategoryClick);
+  refs.mainBookList.addEventListener('click', handleOpenBookModal);
 }
-
-window.addEventListener('resize', handleHomeResize);
