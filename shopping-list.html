@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping list</title>
     <script type="module" crossorigin src="/BookShelf/assets/vendor-NDY6upjA.js"></script>
-    <script type="module" crossorigin src="/BookShelf/assets/main-F5ZgYwh_.js"></script>
+    <script type="module" crossorigin src="/BookShelf/assets/main-BQIpmyEj.js"></script>
     <link rel="stylesheet" crossorigin href="/BookShelf/assets/vendor-CUAiGeZ-.css">
-    <link rel="stylesheet" crossorigin href="/BookShelf/assets/main-DR6DcLN-.css">
+    <link rel="stylesheet" crossorigin href="/BookShelf/assets/main-Czbb8Nze.css">
   </head>
   <body data-page="shopping-list">
     <header class="header">
@@ -39,6 +39,20 @@
           <div class="shopping-list-books">
             <h1 class="main-title">Shopping<span>List</span></h1>
           </div>
+          <div class="shop-list-empty is-hidden">
+            <p class="shop-list-empty-message">
+              This page is empty, add some books and proceed to order.
+            </p>
+            <picture class="shop-list-empty-img">
+              <source media="(min-width: 768px)" srcset="/BookShelf/assets/empty-basket_desktop_tab@1x-BJXHaDeK.avif 1x, /BookShelf/assets/empty-basket_desktop_tab@2x-DGExDmm0.avif 2x" type="image/avif" />
+              <source media="(min-width: 768px)" srcset="/BookShelf/assets/empty-basket_desktop_tab@1x-By97_1hX.png 1x, /BookShelf/assets/empty-basket_desktop_tab@2x-fLaBMMjS.png 2x" type="image/png" />
+              <source media="(max-width: 767px)" srcset="/BookShelf/assets/empty-basket_mob@1x-Bm7ZRCf1.avif 1x, /BookShelf/assets/empty-basket_mob@2x-D1N0cNf8.avif 2x" type="image/avif" />
+              <source media="(max-width: 767px)" srcset="/BookShelf/assets/empty-basket_mob@1x-Ugr-JpaK.png 1x, /BookShelf/assets/empty-basket_mob@2x-PnZtxHAh.png 2x" type="image/png" />
+              <img class="shop-list-empty-img" src="/BookShelf/assets/empty-basket_mob@1x-Ugr-JpaK.png" alt="Books image" width="265"
+                height="198" />
+            </picture>
+          </div>
+          <div id="pagination" class="tui-pagination"></div>
         </div>
       </section>
     </main>

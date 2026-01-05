@@ -30,4 +30,4 @@ import{S as u,a as f}from"./vendor-NDY6upjA.js";(function(){const e=document.cre
               </li>`,s=A.map(({list_name:t})=>{if(t)return`<li class="categories-list-item">
                 <button class="categories-list-button">${t}</button>
               </li>`}).join("");o.categoriesList.innerHTML=e+s}async function tA(A){if(A.target.nodeName!=="BUTTON")return;const e=A.target.textContent,s=document.querySelector(".current");s&&s.classList.remove("current"),A.target.classList.add("current");try{if(e==="All categories")o.mainBookList.dataset.booklist="top-books",await g();else{o.mainBookList.dataset.booklist="books-by-category";const t=await V(e);_(t)}(a.screenType==="mobile"||a.screenType==="tablet")&&o.mainBooksBlock.scrollIntoView({behavior:"smooth",block:"start"})}catch(t){console.log(t)}}function oA(){AA(),I(),window.addEventListener("resize",q)}const nA=document.body.dataset.page;switch(nA){case"home":oA();break;case"shopping-list":break;default:console.log("Unknown page")}O();T();
-//# sourceMappingURL=main-F5ZgYwh_.js.map
+//# sourceMappingURL=main-BQIpmyEj.js.map
