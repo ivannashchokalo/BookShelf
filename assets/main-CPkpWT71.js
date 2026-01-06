@@ -15,8 +15,8 @@ import{S as u,a as f}from"./vendor-NDY6upjA.js";(function(){const e=document.cre
   <div class="book-modal-wrap">
   <h3 class="book-modal-title">${s}</h3>
   <p class="book-modal-author">${t}</p>
-  <div class="book-modal-shops-wrap></div>
-  <button class="book-modal-btn" data-id="${A}">Add to shopping list</button>
+  <div class="book-modal-shops-wrap"></div>
+  <button type="button" class="book-modal-btn" data-id="${A}">Add to shopping list</button>
   </div>`;o.bookModal.innerHTML=r}async function I(){o.mainBookList.addEventListener("click",W),a.screenType=B(),await g()}async function g(){const A=Z();try{const e=await E();$(e,A)}catch(e){console.error(e)}}function $(A,e){const s=[];A.forEach(t=>{const n=t.books.slice(0,e).map(r=>p(r)).join("");s.push(`<li class="top-books-category">
       <h2 class="top-books-category-title">${t.list_name}</h2>
       <ul class="books-cards-list">${n}</ul>
@@ -30,4 +30,4 @@ import{S as u,a as f}from"./vendor-NDY6upjA.js";(function(){const e=document.cre
               </li>`,s=A.map(({list_name:t})=>{if(t)return`<li class="categories-list-item">
                 <button class="categories-list-button">${t}</button>
               </li>`}).join("");o.categoriesList.innerHTML=e+s}async function tA(A){if(A.target.nodeName!=="BUTTON")return;const e=A.target.textContent,s=document.querySelector(".current");s&&s.classList.remove("current"),A.target.classList.add("current");try{if(e==="All categories")o.mainBookList.dataset.booklist="top-books",await g();else{o.mainBookList.dataset.booklist="books-by-category";const t=await V(e);_(t)}(a.screenType==="mobile"||a.screenType==="tablet")&&o.mainBooksBlock.scrollIntoView({behavior:"smooth",block:"start"})}catch(t){console.log(t)}}function oA(){AA(),I(),initBookModal(),window.addEventListener("resize",q)}const nA=document.body.dataset.page;switch(nA){case"home":oA();break;case"shopping-list":break;default:console.log("Unknown page")}O();T();
-//# sourceMappingURL=main-DYVWGuCU.js.map
+//# sourceMappingURL=main-CPkpWT71.js.map
