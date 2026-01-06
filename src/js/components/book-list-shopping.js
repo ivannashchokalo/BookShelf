@@ -32,4 +32,3 @@ function bookCardTemplate(book) {
     </li>
   `;
 }
-
