@@ -21,17 +21,18 @@ export async function handleOpenBookModal(e) {
 }
 
 function renderBookModal({ _id, book_image, title, author, buy_links }) {
-  const markup = `<img class="book-modal-cover" src="${book_image}" alt="Book cover of ${title}">
+  const markup =`<img class="book-modal-cover" src="${book_image}" alt="Book cover of ${title}">
   <div class="book-modal-wrap">
-  <h3 class="book-modal-title">${title}</h3>
-  <p class="book-modal-author">${author}</p>
-  <div class="book-modal-shops-wrap></div>
-  <button class="book-modal-btn" data-id="${_id}">Add to shopping list</button>
+    <h3 class="book-modal-title">${title}</h3>
+    <p class="book-modal-author">${author}</p>
+    <div class="book-modal-shops-wrap"></div>
+    <button  type="button" class="book-modal-btn" data-id="${_id}">Add to shopping list</button>
   </div>`;
   refs.bookModal.innerHTML = markup;
 }
 
 function onModalClick(e) {
+  e.preventDefault();
   const btn = e.target.closest('.book-modal-btn');
   if (!btn) return;
 
