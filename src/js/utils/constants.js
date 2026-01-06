@@ -7,6 +7,8 @@ export const refs = {
   arrowElem: document.querySelector('.swiper-button-icon'),
   scrollUpBtn: document.querySelector('.scroll-up'),
   bookModal: document.querySelector('.book-modal'),
+  list: document.getElementById('books-list'),
+  empty: document.querySelector('.shop-list-empty'),
 };
 
 export const STATE = {
