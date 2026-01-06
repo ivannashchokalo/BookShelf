@@ -5,5 +5,6 @@ import { handleHomeResize } from '../utils/helpers';
 export function initHome() {
   initCategoryList();
   initBookList();
+  initBookModal();
   window.addEventListener('resize', handleHomeResize);
 }
