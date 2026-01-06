@@ -1,7 +1,11 @@
 import { fetchBookById } from '../utils/books-api';
 import { refs } from '../utils/constants';
+import { addToWishlist, isInWishlist, removeFromWishlist } from '../utils/helpers';
 
-export function initBookModal() {}
+export function initBookModal() {
+  // Делегування кліку в модалці
+  refs.bookModal.addEventListener('click', onModalClick);
+}
 
 export async function handleOpenBookModal(e) {
   const bookCard = e.target.closest('li.book-card');
@@ -25,4 +29,20 @@ function renderBookModal({ _id, book_image, title, author, buy_links }) {
   <button class="book-modal-btn" data-id="${_id}">Add to shopping list</button>
   </div>`;
   refs.bookModal.innerHTML = markup;
+}
+
+function onModalClick(e) {
+  const btn = e.target.closest('.book-modal-btn');
+  if (!btn) return;
+
+  const id = btn.dataset.id;
+  if (!id) return;
+
+  if (isInWishlist(id)) {
+    removeFromWishlist(id);
+    btn.textContent = 'Add to shopping list';
+  } else {
+    addToWishlist(id);
+    btn.textContent = 'Remove from shopping list';
+  }
 }

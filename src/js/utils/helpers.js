@@ -1,5 +1,7 @@
 import { getTopBooks } from '../components/main-book-list';
 import { refs, STATE } from './constants';
+import { refs, STATE, WISHLIST_KEY } from './constants';
+import { loadFromLS, saveToLS } from './storage';
 
 export async function handleHomeResize() {
   const screenType = getScreenType();
@@ -32,3 +34,4 @@ export function getResponsiveCardsLimit() {
   };
   return limits[screenType];
 }
+
