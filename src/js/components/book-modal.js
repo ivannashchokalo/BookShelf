@@ -1,6 +1,6 @@
 import { fetchBookById } from '../utils/books-api';
 import { refs } from '../utils/constants';
-import { addToWishlist, isInWishlist, removeFromWishlist } from '../utils/helpers';
+import { addToWishlist, isInWishlist, removeFromWishlist } from './shopping-list-components';
 
 export function initBookModal() {
   // Делегування кліку в модалці
