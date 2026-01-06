@@ -1,5 +1,5 @@
-import { refs, STATE, WISHLIST_KEY } from './constants';
-import { loadFromLS, saveToLS } from './storage';
+import { refs, STATE, WISHLIST_KEY } from '../utils/constants';
+import { loadFromLS, saveToLS } from '../utils/storage';
 
 
 export function getWishlist() {
