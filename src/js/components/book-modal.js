@@ -32,6 +32,7 @@ function renderBookModal({ _id, book_image, title, author, buy_links }) {
 }
 
 function onModalClick(e) {
+  e.preventDefault();
   const btn = e.target.closest('.book-modal-btn');
   if (!btn) return;
 
