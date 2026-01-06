@@ -6,9 +6,12 @@ import barnerAndNobleLogo from '../../img/book-modal/barner-and-noble.svg';
 import bamLogo from '../../img/book-modal/books-a-million.svg';
 import bookshopLogo from '../../img/book-modal/bookshop.svg';
 import defaultLogo from '../../img/book-modal/default.svg';
+import { addToWishlist, isInWishlist, removeFromWishlist } from '../utils/helpers';
 
 export function initBookModal() {
   refs.mainBookList.addEventListener('click', handleOpenBookModal);
+   // Делегування кліку в модалці
+  refs.bookModal.addEventListener('click', onModalClick);
 }
 
 async function handleOpenBookModal(e) {
@@ -63,4 +66,20 @@ function renderBookLink({ name, url }) {
   <img src="${logoSrc}" alt="${name} logo" class="modal-book-logo"/>
   </a>
   </li>`;
+}
+
+function onModalClick(e) {
+  const btn = e.target.closest('.book-modal-btn');
+  if (!btn) return;
+
+  const id = btn.dataset.id;
+  if (!id) return;
+
+  if (isInWishlist(id)) {
+    removeFromWishlist(id);
+    btn.textContent = 'Add to shopping list';
+  } else {
+    addToWishlist(id);
+    btn.textContent = 'Remove from shopping list';
+  }
 }
