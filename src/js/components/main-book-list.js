@@ -1,10 +1,8 @@
 import { fetchTopBooks } from '../utils/books-api';
 import { refs, STATE } from '../utils/constants';
 import { getResponsiveCardsLimit, getScreenType } from '../utils/helpers';
-import { handleOpenBookModal } from './book-modal';
 
 export async function initBookList() {
-  refs.mainBookList.addEventListener('click', handleOpenBookModal);
   // зчитати і застосувати тему з локального сховища
   // за бажанням можна додати каунтер в хедер до шопінг листа. Зчитати і застосувати його з локального сховища
   STATE.screenType = getScreenType();
