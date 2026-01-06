@@ -1,96 +1,157 @@
 export function initHeader() {
     // ===== ACTIVE MENU =====
-    const currentPage = window.location.pathname;
+    const currentPathname = window.location.pathname;
 
-    const homeLink = document.querySelector('.menu-home');
-    const shoppingLink = document.querySelector('.menu-shopping-list');
+    const desktopHomeLinkEl = document.querySelector('.menu-home');
+    const desktopShoppingLinkEl = document.querySelector('.menu-shopping-list');
 
-    if (homeLink && shoppingLink) {
-        if (currentPage.includes('index.html') || currentPage.endsWith('/')) {
-            homeLink.classList.add('active');
+    if (desktopHomeLinkEl && desktopShoppingLinkEl) {
+        if (currentPathname.includes('index.html') || currentPathname.endsWith('/')) {
+            desktopHomeLinkEl.classList.add('active');
         }
 
-        if (currentPage.includes('shopping-list.html')) {
-            shoppingLink.classList.add('active');
-        }
-    }
-    /* ===== MOBILE MENU ACTIVE LINK ===== */
-    const mobHomeLink = document.querySelector('.mob-menu-link');
-    const mobShoppingLink = document.querySelector('.mob-menu-list-link');
-
-    if (mobHomeLink && mobShoppingLink) {
-        if (currentPage.includes('index.html') || currentPage.endsWith('/')) {
-            mobHomeLink.classList.add('active');
-            mobShoppingLink.classList.remove('active');
-        }
-
-        if (currentPage.includes('shopping-list.html')) {
-            mobShoppingLink.classList.add('active');
-            mobHomeLink.classList.remove('active');
+        if (currentPathname.includes('shopping-list.html')) {
+            desktopShoppingLinkEl.classList.add('active');
         }
     }
 
+    // ===== MOBILE MENU ACTIVE LINK =====
+    const mobileHomeLinkEl = document.querySelector('.mob-menu-link');
+    const mobileShoppingLinkEl = document.querySelector('.mob-menu-list-link');
+
+    if (mobileHomeLinkEl && mobileShoppingLinkEl) {
+        if (currentPathname.includes('index.html') || currentPathname.endsWith('/')) {
+            mobileHomeLinkEl.classList.add('active');
+            mobileShoppingLinkEl.classList.remove('active');
+        }
+
+        if (currentPathname.includes('shopping-list.html')) {
+            mobileShoppingLinkEl.classList.add('active');
+            mobileHomeLinkEl.classList.remove('active');
+        }
+    }
 
     // ===== THEME TOGGLE =====
-    const toggle = document.querySelector('.toggle');
-    if (!toggle) return;
+    const themeToggleBtnEl = document.querySelector('.toggle');
+    if (!themeToggleBtnEl) return;
 
-    const savedTheme = localStorage.getItem('theme');
+    const storedTheme = localStorage.getItem('theme');
 
-    if (savedTheme === 'dark') {
+    if (storedTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
-        toggle.classList.add('active');
+        themeToggleBtnEl.classList.add('active');
     }
 
-    toggle.addEventListener('click', () => {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    themeToggleBtnEl.addEventListener('click', () => {
+        const isDarkThemeActive =
+            document.documentElement.getAttribute('data-theme') === 'dark';
 
-        if (isDark) {
+        if (isDarkThemeActive) {
             document.documentElement.removeAttribute('data-theme');
             localStorage.setItem('theme', 'light');
-            toggle.classList.remove('active');
+            themeToggleBtnEl.classList.remove('active');
         } else {
             document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
-            toggle.classList.add('active');
+            themeToggleBtnEl.classList.add('active');
         }
     });
-    /* ===== BURGER / MOBILE MENU ===== */
-    const openBtn = document.querySelector('#menu');
-    const closeBtn = document.querySelector('#menu-close');
-    const mobileMenu = document.querySelector('#mobile-menu');
 
-    if (!openBtn || !closeBtn || !mobileMenu) return;
+    // ===== BURGER / MOBILE MENU =====
+    const burgerOpenBtnEl = document.querySelector('#menu');
+    const burgerCloseBtnEl = document.querySelector('#menu-close');
+    const mobileMenuContainerEl = document.querySelector('#mobile-menu');
+
+    if (!burgerOpenBtnEl || !burgerCloseBtnEl || !mobileMenuContainerEl) return;
 
     function openMobileMenu() {
-        mobileMenu.classList.add('is-open');
-        openBtn.classList.add('disabled');
-        closeBtn.classList.remove('disabled');
+        mobileMenuContainerEl.classList.add('is-open');
+        burgerOpenBtnEl.classList.add('disabled');
+        burgerCloseBtnEl.classList.remove('disabled');
         document.body.classList.add('no-scroll');
     }
 
     function closeMobileMenu() {
-        mobileMenu.classList.remove('is-open');
-        openBtn.classList.remove('disabled');
-        closeBtn.classList.add('disabled');
+        mobileMenuContainerEl.classList.remove('is-open');
+        burgerOpenBtnEl.classList.remove('disabled');
+        burgerCloseBtnEl.classList.add('disabled');
         document.body.classList.remove('no-scroll');
     }
 
-    openBtn.addEventListener('click', openMobileMenu);
-    closeBtn.addEventListener('click', closeMobileMenu);
+    burgerOpenBtnEl.addEventListener('click', openMobileMenu);
+    burgerCloseBtnEl.addEventListener('click', closeMobileMenu);
 
-    /* ESC */
-    window.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
+    // ESC key
+    window.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
             closeMobileMenu();
         }
     });
 
-    /* Клік по пункту меню */
-    mobileMenu.addEventListener('click', e => {
-        if (e.target.closest('a')) {
+    // Click on mobile menu link
+    mobileMenuContainerEl.addEventListener('click', event => {
+        if (event.target.closest('a')) {
             closeMobileMenu();
         }
     });
-    
+
+    // ===== AUTH / USER =====
+    const signUpButtonEl = document.getElementById('sign-up-btn');
+    const userInfoContainerEl = document.getElementById('user-info');
+    const userNameTextEl = document.getElementById('user-name');
+
+    const authBackdropEl = document.getElementById('auth-backdrop');
+    const authCloseBtnEl = document.getElementById('auth-close');
+    const authFormEl = document.getElementById('auth-form');
+
+    // ===== INIT USER =====
+    const storedUserData = JSON.parse(localStorage.getItem('user'));
+    if (storedUserData) {
+        updateUserUI(storedUserData);
+    }
+
+    // ===== OPEN MODAL =====
+    signUpButtonEl.addEventListener('click', () => {
+        authBackdropEl.classList.remove('hidden');
+        document.body.classList.add('no-scroll');
+    });
+
+    // ===== CLOSE MODAL =====
+    authCloseBtnEl.addEventListener('click', closeAuthModal);
+    authBackdropEl.addEventListener('click', event => {
+        if (event.target === authBackdropEl) closeAuthModal();
+    });
+
+    function closeAuthModal() {
+        authBackdropEl.classList.add('hidden');
+        document.body.classList.remove('no-scroll');
+    }
+
+    // ===== SUBMIT FORM =====
+    authFormEl.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const userNameInputValue =
+            document.getElementById('auth-name').value.trim();
+        const userEmailInputValue =
+            document.getElementById('auth-email').value.trim();
+
+        const newUserData = {
+            name: userNameInputValue,
+            email: userEmailInputValue,
+        };
+
+        localStorage.setItem('user', JSON.stringify(newUserData));
+
+        updateUserUI(newUserData);
+        closeAuthModal();
+        authFormEl.reset();
+    });
+
+    // ===== UI STATE =====
+    function updateUserUI(user) {
+        signUpButtonEl.classList.add('hidden');
+        userInfoContainerEl.classList.remove('hidden');
+        userNameTextEl.textContent = user.name;
+    }
 }

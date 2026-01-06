@@ -29,33 +29,27 @@
       <!-- Theme toggle -->
       <div class="toggle" aria-label="Theme switch"></div>
 
-            <!-- Sign up -->
+      <!-- Sign up -->
       <button class="header-btn" id="sign-up-btn">
         Sign up
         <svg class="btn-arrow" width="22" height="22">
           <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
         </svg>
       </button>
-<!--User-->
-<div class="user-info hidden" id="user-info">
-
-</div>
+      <!--User-->
+      <div class="user-info hidden" id="user-info">
+        <span class="user-name" id="user-name"></span>
+      </div>
 
 
       <!-- Burger buttons -->
-      <button type="button" class="header-menu" id="menu" aria-label="Open menu"  data-modal-open>
+      <button type="button" class="header-menu" id="menu" aria-label="Open menu" data-modal-open>
         <svg class="header-menu-svg" width="28" height="28">
           <use href="../icons/symbol-defs.svg#icon-burger-menu"></use>
         </svg>
       </button>
 
-      <button
-        type="button"
-        class="header-menu-close disabled"
-        id="menu-close"
-        aria-label="Close menu"
-        data-modal-close
-      >
+      <button type="button" class="header-menu-close disabled" id="menu-close" aria-label="Close menu" data-modal-close>
         <svg class="header-menu-close-svg" width="22" height="22">
           <use href="../icons/symbol-defs.svg#icon-x-close"></use>
         </svg>
@@ -66,7 +60,7 @@
 
 <!-- Mobile menu -->
 <div class="mobile" id="mobile-menu">
-  
+
   <!-- TOP -->
   <div class="mobile-menu">
     <ul class="mob-menu-list">
@@ -94,15 +88,43 @@
     </button>
 
     <div class="image">
-      <img
-        class="mob-books-img"
-        srcset="../img/mob-menu/mob-menu-1x-min.png, ../img/mobile-menu/mob-menu-2x-min.png"
-        src="../img/mobile-menu/mob-menu-1x-min.png"
-        alt="Books illustration"
-        loading="lazy"
-        width="450"
-      />
+      <img class="mob-books-img" srcset="../img/mob-menu/mob-menu-1x-min.png, ../img/mobile-menu/mob-menu-2x-min.png"
+        src="../img/mobile-menu/mob-menu-1x-min.png" alt="Books illustration" loading="lazy" width="450" />
     </div>
   </div>
 
+</div>
+
+<div class="auth-backdrop hidden" id="auth-backdrop">
+  <div class="auth-modal">
+
+    <button class="auth-close" id="auth-close" aria-label="Close auth modal">
+      <svg class="auth-close-svg" width="28" height="28">
+        <use href="../icons/symbol-defs.svg#icon-x-close"></use>
+      </svg>
+    </button>
+
+    <form id="auth-form">
+
+      <div class="auth-input">
+        <input type="text" id="auth-name" placeholder="Name" required />
+      </div>
+
+      <div class="auth-input">
+        <input type="email" id="auth-email" placeholder="Email" required />
+        <svg class="auth-input-icon" width="28" height="28">
+          <use href="../icons/symbol-defs.svg#icon-mail"></use>
+        </svg>
+      </div>
+
+      <div class="auth-input">
+        <input type="password" id="auth-password" placeholder="Password" required />
+        <svg class="auth-input-icon" width="28" height="28">
+          <use href="../icons/symbol-defs.svg#icon-lock"></use>
+        </svg>
+      </div>
+
+      <button type="submit" class="auth-submit">Sign up</button>
+    </form>
+  </div>
 </div>
