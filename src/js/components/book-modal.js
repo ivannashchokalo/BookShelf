@@ -1,5 +1,11 @@
 import { fetchBookById } from '../utils/books-api';
 import { refs } from '../utils/constants';
+import {
+  addToWishlist,
+  isInWishlist,
+  removeFromWishlist,
+} from './shopping-list-components';
+
 import amazonLogo from '../../img/book-modal/amazon.svg';
 import appleLogo from '../../img/book-modal/apple-books.svg';
 import barnerAndNobleLogo from '../../img/book-modal/barner-and-noble.svg';
@@ -20,8 +26,8 @@ async function handleOpenBookModal(e) {
   const data = await fetchBookById(bookId);
   console.log(data);
   renderBookModal(data);
-  // слухач на кнопку
   refs.bookModal.showModal();
+  refs.bookModal.addEventListener('click', handleModalBtnClick);
 }
 
 function renderBookModal({ _id, book_image, title, author, buy_links }) {
@@ -30,8 +36,8 @@ function renderBookModal({ _id, book_image, title, author, buy_links }) {
   <div class="book-modal-wrap">
   <h3 class="book-modal-title">${title}</h3>
   <p class="book-modal-author">${author}</p>
-  <ul class="book-modal-links-list">${linksMarkup}</ul>
-  <button class="book-modal-btn" data-id="${_id}">Add to shopping list</button>
+  <div class="book-modal-shops-wrap">${linksMarkup}</div>
+  <button type="button" class="book-modal-btn" data-id="${_id}">Add to shopping list</button>
   </div>`;
   refs.bookModal.innerHTML = markup;
 }
@@ -63,4 +69,21 @@ function renderBookLink({ name, url }) {
   <img src="${logoSrc}" alt="${name} logo" class="modal-book-logo"/>
   </a>
   </li>`;
+}
+
+function handleModalBtnClick(e) {
+  e.preventDefault();
+  const btn = e.target.closest('.book-modal-btn');
+  if (!btn) return;
+
+  const id = btn.dataset.id;
+  if (!id) return;
+
+  if (isInWishlist(id)) {
+    removeFromWishlist(id);
+    btn.textContent = 'Add to shopping list';
+  } else {
+    addToWishlist(id);
+    btn.textContent = 'Remove from shopping list';
+  }
 }

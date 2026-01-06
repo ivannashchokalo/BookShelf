@@ -13,3 +13,4 @@ export const STATE = {
   screenType: 'mobile', // "desktop", "tablet", "mobile"
 };
 
+export const WISHLIST_KEY = 'wishlist';
