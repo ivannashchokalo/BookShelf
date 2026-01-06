@@ -25,7 +25,7 @@ function renderBookModal({ _id, book_image, title, author, buy_links }) {
   <div class="book-modal-wrap">
   <h3 class="book-modal-title">${title}</h3>
   <p class="book-modal-author">${author}</p>
-  <div class="book-modal-shops-wrap></div>
+  <div class="book-modal-shops-wrap"></div>
   <button class="book-modal-btn" data-id="${_id}">Add to shopping list</button>
   </div>`;
   refs.bookModal.innerHTML = markup;
