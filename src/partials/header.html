@@ -10,7 +10,7 @@
       </a>
 
       <!-- Desktop navigation -->
-      <div class="desktop-nav">
+      <div class="desktop-nav  hidden" id="desktop-nav">
         <ul class="menu-ul">
           <li class="menu-li-home">
             <a href="../index.html" class="menu-home">Home</a>
@@ -37,9 +37,21 @@
         </svg>
       </button>
       <!--User-->
-      <div class="user-info hidden" id="user-info">
+      <button class="user-btn hidden" id="user-btn">
+        <span class="user-avatar">
+          <svg class="user-avatar-default" width="13" height="17">
+            <use href="../icons/symbol-defs.svg#icon-user"></use>
+          </svg>
+          <!-- якщо буде фото, підставиш img -->
+        </span>
+
         <span class="user-name" id="user-name"></span>
-      </div>
+
+        <svg class="user-arrow" width="23" height="26">
+          <use href="../icons/symbol-defs.svg#icon-down-arrow"></use>
+        </svg>
+      </button>
+
 
 
       <!-- Burger buttons -->

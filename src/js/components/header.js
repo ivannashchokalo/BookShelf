@@ -99,6 +99,10 @@ export function initHeader() {
     const signUpButtonEl = document.getElementById('sign-up-btn');
     const userInfoContainerEl = document.getElementById('user-info');
     const userNameTextEl = document.getElementById('user-name');
+    const desktopNavEl = document.getElementById('desktop-nav');
+    const userBtnEl = document.getElementById('user-btn');
+
+
 
     const authBackdropEl = document.getElementById('auth-backdrop');
     const authCloseBtnEl = document.getElementById('auth-close');
@@ -148,10 +152,13 @@ export function initHeader() {
         authFormEl.reset();
     });
 
-    // ===== UI STATE =====
     function updateUserUI(user) {
         signUpButtonEl.classList.add('hidden');
-        userInfoContainerEl.classList.remove('hidden');
+        desktopNavEl.classList.remove('hidden');
+
+        userBtnEl.classList.remove('hidden');
         userNameTextEl.textContent = user.name;
     }
+
+
 }

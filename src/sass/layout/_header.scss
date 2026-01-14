@@ -34,10 +34,6 @@
 
 /* ================= DESKTOP MENU ================= */
 
-.desktop-nav {
-    display: none;
-}
-
 .menu-ul {
     display: flex;
     align-items: center;
@@ -122,7 +118,7 @@
 }
 
 .header-btn {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     width: 184px;
@@ -382,13 +378,49 @@
     opacity: 0.9;
 }
 
-.user-name {
-    width: 184px;
+.user-btn {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
     height: 45px;
+    padding: 0 14px;
+
+    background-color: var(--violet);
+    border-radius: 36px;
+    border: none;
+
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 37px;
+    height: 37px;
+    border-radius: 100%;
+    background-color: #f6f6f6;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar-default {
+    fill: var(--violet);
+}
+
+.user-name {
     font-weight: 700;
     font-size: 22px;
     letter-spacing: -0.02em;
     color: var(--white);
-    border-radius: 36px;
-    background: var(--violet);
+}
+
+.user-arrow {
+    fill: var(--white);
+}
+
+
+.hidden {
+    display: none !important;
 }
