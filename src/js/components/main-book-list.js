@@ -1,6 +1,8 @@
 import { fetchTopBooks } from '../utils/books-api';
 import { refs, STATE } from '../utils/constants';
 import { getResponsiveCardsLimit, getScreenType } from '../utils/helpers';
+import { hideLoader, showLoader } from '../utils/loader';
+import { notyf } from '../utils/notifications';
 
 export async function initBookList() {
   // зчитати і застосувати тему з локального сховища
@@ -11,11 +13,15 @@ export async function initBookList() {
 
 export async function getTopBooks() {
   const cardsLimit = getResponsiveCardsLimit();
+  showLoader()
   try {
     const data = await fetchTopBooks();
     renderTopBooks(data, cardsLimit);
   } catch (err) {
-    console.error(err);
+    console.log(err);
+    notyf.error('An error occurred while loading');
+  } finally {
+    hideLoader()
   }
 }
 
