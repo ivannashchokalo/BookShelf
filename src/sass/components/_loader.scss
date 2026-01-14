@@ -1,10 +1,10 @@
 .loader {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    color: #4f2ee8; // 🎨 BookShelf primary
+    color: var(--loader-color); 
     font-size: 45px;
     text-indent: -9999em;
     overflow: hidden;
@@ -13,6 +13,7 @@
     border-radius: 50%;
     transform: translateZ(0);
     animation: mltShdSpin 1.7s infinite ease, round 1.7s infinite ease;
+    text-shadow: 0 0 5px rgba(26,26,46,0.6);
 }
 
 @keyframes mltShdSpin {
@@ -74,4 +75,10 @@
 
 .hide-loader {
     display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  .loader {
+    position: absolute;
+  }
 }
