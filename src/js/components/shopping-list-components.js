@@ -1,6 +1,9 @@
 import { refs, WISHLIST_KEY } from '../utils/constants';
 import { loadFromLS, saveToLS } from '../utils/storage';
 import { fetchBookById } from '../utils/books-api';
+import icon from '../../icons/symbol-defs.svg';
+import trash from '../../icons/symbol-defs.svg?url'; 
+ 
 
 export function getWishlist() {
   return loadFromLS(WISHLIST_KEY) || [];
@@ -30,36 +33,30 @@ function hideEmpty() {
   refs.empty.classList.add('is-hidden');
 }
 
-function bookCardTemplate(book) {
-  const { _id, title, author, category, description, book_image, buy_links = [] } = book;
+function bookCardTemplate(book){ 
+        const { _id, book_image, title, list_name, description, author, amazon_product_url, buy_links } = book;
 
-  const shops = buy_links
-    .map(link => `<a class="book-shop-link" href="${link.url}" target="_blank" rel="noopener">${link.name}</a>`)
-    .join('');
-
-  return `
-    <li class="book-card" data-id="${_id}">
-      <div class="book-cover">
-        <img src="${book_image}" alt="Cover of ${title}" loading="lazy" />
-      </div>
-      <div class="book-info">
-        <h3 class="book-title">${title}</h3>
-        <div class="book-meta">
-          <span class="book-category">${category}</span>
-          <span class="book-author">by ${author}</span>
-        </div>
+    return `<li class="shop-list-item" id="${_id}">
+        <img class="shop-list-img"
+            src="${book_image}"
+            alt="${title}" />  
+        <div class="book-info">
+        <h1 class="book-title">${title}</h1>
+        <p class="book-category">${list_name}</p>
         <p class="book-description">${description}</p>
-        <div class="book-actions">
-          <div class="book-shops">${shops}</div>
-          <button type="button" class="shop-list-delete-btn" data-id="${_id}">
-            Remove
-          </button>
+        <div class="card-footer">
+        <p class="book-author">${author}</p>
+        <ul class="book-shop-links">
+        <li><a href="${amazon_product_url}" target="_blank"><svg class="book-shop-img amazon-logo"><use href="${icon}#icon-amazon"></use></svg></a></li>
+        <li><a class="book-shop-link" href="${buy_links[1].url}" target="_blank"><svg class="book-shop-img apple-books-logo"><use href="${icon}#icon-ibooks"></use></svg></a></li>
+        </ul>
+        </div> 
         </div>
-      </div>
-    </li>
-  `;
+         <button class="shop-list-delete-btn" data-id="${_id}" aria-label="Remove book">
+        <svg class="delete-btn-icon"><use href="${trash}#icon-trash"></use></svg>
+      </button>
+    </li>`;
 }
-
 export async function renderShoppingList() {
   if (!refs.list || !refs.empty) return;
 

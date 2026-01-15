@@ -1,3 +1,88 @@
+// ================= BASE =================
 .is-hidden {
     display: none;
+}
+
+.shopping-list-aside {
+    display: none;
+
+    @media screen and (min-width: 1440px) {
+        display: block;
+    }
+}
+
+// ================= EMPTY STATE (mobile/tablet) =================
+.shop-list-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+
+    width: 100%;
+    max-width: 265px;
+    margin: 120px auto 0;
+    padding: 0;
+
+    &-message {
+        font-size: 15px;
+        line-height: 1.28571;
+        letter-spacing: -0.02em;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    &-img {
+        // базові стилі, якщо треба — можна додати тут
+    }
+
+    @media screen and (min-width: 768px) {
+        gap: 20px;
+        max-width: 322px;
+        margin-top: 140px;
+
+        &-message {
+            width: 244px;
+            margin: 0 auto;
+            letter-spacing: -0.28px;
+            font-size: 18px;
+        }
+
+        &-img {
+            width: 322px;
+            height: 241px;
+        }
+    }
+
+    // desktop позиціонування в правій колонці
+    @media screen and (min-width: 1440px) {
+        margin: 0;
+        justify-self: center;
+        align-self: center;
+        max-width: 322px;
+    }
+}
+
+// ================= DESKTOP LAYOUT 1440+ =================
+@media screen and (min-width: 1440px) {
+    .shopping-list-container {
+        display: grid;
+        grid-template-columns: 356px 1fr;
+        column-gap: 70px;
+        align-items: start;
+    }
+
+    .shopping-list-content {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-height: calc(100vh - 600px);
+    }
+
+    .shopping-list-books {
+        justify-self: start;
+        align-self: start;
+    }
+
+    #pagination {
+        align-self: end;
+    }
 }
