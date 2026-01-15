@@ -81,46 +81,58 @@ export function initHeader() {
     burgerOpenBtnEl.addEventListener('click', openMobileMenu);
     burgerCloseBtnEl.addEventListener('click', closeMobileMenu);
 
-    // ESC key
     window.addEventListener('keydown', event => {
-        if (event.key === 'Escape') {
-            closeMobileMenu();
-        }
+        if (event.key === 'Escape') closeMobileMenu();
     });
 
-    // Click on mobile menu link
     mobileMenuContainerEl.addEventListener('click', event => {
-        if (event.target.closest('a')) {
-            closeMobileMenu();
-        }
+        if (event.target.closest('a')) closeMobileMenu();
     });
 
     // ===== AUTH / USER =====
     const signUpButtonEl = document.getElementById('sign-up-btn');
-    const userInfoContainerEl = document.getElementById('user-info');
     const userNameTextEl = document.getElementById('user-name');
     const desktopNavEl = document.getElementById('desktop-nav');
     const userBtnEl = document.getElementById('user-btn');
-
-
 
     const authBackdropEl = document.getElementById('auth-backdrop');
     const authCloseBtnEl = document.getElementById('auth-close');
     const authFormEl = document.getElementById('auth-form');
 
-    // ===== INIT USER =====
-    const storedUserData = JSON.parse(localStorage.getItem('user'));
-    if (storedUserData) {
-        updateUserUI(storedUserData);
+    function updateHeaderVisibility() {
+        const isMobile = window.innerWidth < 768;
+        const storedUser = localStorage.getItem('user');
+
+        if (isMobile) {
+            desktopNavEl.classList.add('hidden');
+            signUpButtonEl.classList.add('hidden');
+            userBtnEl.classList.add('hidden');
+        } else {
+            desktopNavEl.classList.remove('hidden');
+
+            if (storedUser) {
+                signUpButtonEl.classList.add('hidden');
+                userBtnEl.classList.remove('hidden');
+            } else {
+                signUpButtonEl.classList.remove('hidden');
+                userBtnEl.classList.add('hidden');
+            }
+        }
     }
 
-    // ===== OPEN MODAL =====
+    const storedUserData = JSON.parse(localStorage.getItem('user'));
+    if (storedUserData) {
+        userNameTextEl.textContent = storedUserData.name;
+    }
+
+    updateHeaderVisibility();
+    window.addEventListener('resize', updateHeaderVisibility);
+
     signUpButtonEl.addEventListener('click', () => {
         authBackdropEl.classList.remove('hidden');
         document.body.classList.add('no-scroll');
     });
 
-    // ===== CLOSE MODAL =====
     authCloseBtnEl.addEventListener('click', closeAuthModal);
     authBackdropEl.addEventListener('click', event => {
         if (event.target === authBackdropEl) closeAuthModal();
@@ -131,34 +143,19 @@ export function initHeader() {
         document.body.classList.remove('no-scroll');
     }
 
-    // ===== SUBMIT FORM =====
     authFormEl.addEventListener('submit', event => {
         event.preventDefault();
 
-        const userNameInputValue =
-            document.getElementById('auth-name').value.trim();
-        const userEmailInputValue =
-            document.getElementById('auth-email').value.trim();
-
         const newUserData = {
-            name: userNameInputValue,
-            email: userEmailInputValue,
+            name: document.getElementById('auth-name').value.trim(),
+            email: document.getElementById('auth-email').value.trim(),
         };
 
         localStorage.setItem('user', JSON.stringify(newUserData));
+        userNameTextEl.textContent = newUserData.name;
 
-        updateUserUI(newUserData);
         closeAuthModal();
         authFormEl.reset();
+        updateHeaderVisibility();
     });
-
-    function updateUserUI(user) {
-        signUpButtonEl.classList.add('hidden');
-        desktopNavEl.classList.remove('hidden');
-
-        userBtnEl.classList.remove('hidden');
-        userNameTextEl.textContent = user.name;
-    }
-
-
 }
