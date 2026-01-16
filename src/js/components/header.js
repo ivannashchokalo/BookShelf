@@ -1,68 +1,60 @@
 export function initHeader() {
-    // ===== ACTIVE MENU =====
     const currentPathname = window.location.pathname;
 
+    const mobileUserEl = document.getElementById('mobile-user');
+const mobileUserNameEl = document.getElementById('mobile-user-name');
+
+
+    // ===== MENU LINKS =====
     const desktopHomeLinkEl = document.querySelector('.menu-home');
     const desktopShoppingLinkEl = document.querySelector('.menu-shopping-list');
-
-    if (desktopHomeLinkEl && desktopShoppingLinkEl) {
-        if (currentPathname.includes('index.html') || currentPathname.endsWith('/')) {
-            desktopHomeLinkEl.classList.add('active');
-        }
-
-        if (currentPathname.includes('shopping-list.html')) {
-            desktopShoppingLinkEl.classList.add('active');
-        }
-    }
-
-    // ===== MOBILE MENU ACTIVE LINK =====
     const mobileHomeLinkEl = document.querySelector('.mob-menu-link');
     const mobileShoppingLinkEl = document.querySelector('.mob-menu-list-link');
 
-    if (mobileHomeLinkEl && mobileShoppingLinkEl) {
-        if (currentPathname.includes('index.html') || currentPathname.endsWith('/')) {
-            mobileHomeLinkEl.classList.add('active');
-            mobileShoppingLinkEl.classList.remove('active');
-        }
+    // ===== HEADER / AUTH ELEMENTS =====
+    const signUpButtonEl = document.getElementById('sign-up-btn');
+    const userNameTextEl = document.getElementById('user-name');
+    const desktopNavEl = document.getElementById('desktop-nav');
+    const userBtnEl = document.getElementById('user-btn');
 
-        if (currentPathname.includes('shopping-list.html')) {
-            mobileShoppingLinkEl.classList.add('active');
-            mobileHomeLinkEl.classList.remove('active');
-        }
-    }
+    const authBackdropEl = document.getElementById('auth-backdrop');
+    const authCloseBtnEl = document.getElementById('auth-close');
+    const authFormEl = document.getElementById('auth-form');
+
+    // ===== MOBILE AUTH BUTTONS =====
+    const mobileLoginBtnEl = document.getElementById('mobile-login-btn');
+    const mobileLogoutBtnEl = document.getElementById('mobile-logout-btn');
 
     // ===== THEME TOGGLE =====
     const themeToggleBtnEl = document.querySelector('.toggle');
-    if (!themeToggleBtnEl) return;
+    if (themeToggleBtnEl) {
+        const storedTheme = localStorage.getItem('theme');
 
-    const storedTheme = localStorage.getItem('theme');
-
-    if (storedTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeToggleBtnEl.classList.add('active');
-    }
-
-    themeToggleBtnEl.addEventListener('click', () => {
-        const isDarkThemeActive =
-            document.documentElement.getAttribute('data-theme') === 'dark';
-
-        if (isDarkThemeActive) {
-            document.documentElement.removeAttribute('data-theme');
-            localStorage.setItem('theme', 'light');
-            themeToggleBtnEl.classList.remove('active');
-        } else {
+        if (storedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
             themeToggleBtnEl.classList.add('active');
         }
-    });
+
+        themeToggleBtnEl.addEventListener('click', () => {
+            const isDark =
+                document.documentElement.getAttribute('data-theme') === 'dark';
+
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeToggleBtnEl.classList.remove('active');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtnEl.classList.add('active');
+            }
+        });
+    }
 
     // ===== BURGER / MOBILE MENU =====
     const burgerOpenBtnEl = document.querySelector('#menu');
     const burgerCloseBtnEl = document.querySelector('#menu-close');
     const mobileMenuContainerEl = document.querySelector('#mobile-menu');
-
-    if (!burgerOpenBtnEl || !burgerCloseBtnEl || !mobileMenuContainerEl) return;
 
     function openMobileMenu() {
         mobileMenuContainerEl.classList.add('is-open');
@@ -78,31 +70,35 @@ export function initHeader() {
         document.body.classList.remove('no-scroll');
     }
 
-    burgerOpenBtnEl.addEventListener('click', openMobileMenu);
-    burgerCloseBtnEl.addEventListener('click', closeMobileMenu);
+    burgerOpenBtnEl?.addEventListener('click', openMobileMenu);
+    burgerCloseBtnEl?.addEventListener('click', closeMobileMenu);
 
-    window.addEventListener('keydown', event => {
-        if (event.key === 'Escape') closeMobileMenu();
+    window.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeMobileMenu();
     });
 
-    mobileMenuContainerEl.addEventListener('click', event => {
-        if (event.target.closest('a')) closeMobileMenu();
+    mobileMenuContainerEl?.addEventListener('click', e => {
+        if (e.target.closest('a')) closeMobileMenu();
     });
 
-    // ===== AUTH / USER =====
-    const signUpButtonEl = document.getElementById('sign-up-btn');
-    const userNameTextEl = document.getElementById('user-name');
-    const desktopNavEl = document.getElementById('desktop-nav');
-    const userBtnEl = document.getElementById('user-btn');
-
-    const authBackdropEl = document.getElementById('auth-backdrop');
-    const authCloseBtnEl = document.getElementById('auth-close');
-    const authFormEl = document.getElementById('auth-form');
-
+    // ===== HEADER VISIBILITY (CORE LOGIC) =====
     function updateHeaderVisibility() {
         const isMobile = window.innerWidth < 768;
         const storedUser = localStorage.getItem('user');
+        const isAuthorized = Boolean(storedUser);
 
+        // MENU LINKS
+        [
+            desktopHomeLinkEl,
+            desktopShoppingLinkEl,
+            mobileHomeLinkEl,
+            mobileShoppingLinkEl,
+        ].forEach(el => {
+            if (!el) return;
+            el.classList.toggle('hidden', !isAuthorized);
+        });
+
+        // DESKTOP HEADER
         if (isMobile) {
             desktopNavEl.classList.add('hidden');
             signUpButtonEl.classList.add('hidden');
@@ -110,7 +106,7 @@ export function initHeader() {
         } else {
             desktopNavEl.classList.remove('hidden');
 
-            if (storedUser) {
+            if (isAuthorized) {
                 signUpButtonEl.classList.add('hidden');
                 userBtnEl.classList.remove('hidden');
             } else {
@@ -118,24 +114,48 @@ export function initHeader() {
                 userBtnEl.classList.add('hidden');
             }
         }
+
+        // MOBILE AUTH BUTTONS
+        if (mobileLoginBtnEl && mobileLogoutBtnEl) {
+            mobileLoginBtnEl.classList.toggle('hidden', isAuthorized);
+            mobileLogoutBtnEl.classList.toggle('hidden', !isAuthorized);
+        }
     }
 
+    // ===== ACTIVE MENU (ONLY IF AUTHORIZED) =====
+    if (localStorage.getItem('user')) {
+        if (
+            currentPathname.includes('index.html') ||
+            currentPathname.endsWith('/')
+        ) {
+            desktopHomeLinkEl?.classList.add('active');
+            mobileHomeLinkEl?.classList.add('active');
+        }
+
+        if (currentPathname.includes('shopping-list.html')) {
+            desktopShoppingLinkEl?.classList.add('active');
+            mobileShoppingLinkEl?.classList.add('active');
+        }
+    }
+
+    // ===== LOAD USER DATA =====
     const storedUserData = JSON.parse(localStorage.getItem('user'));
-    if (storedUserData) {
+    if (storedUserData && userNameTextEl) {
         userNameTextEl.textContent = storedUserData.name;
     }
 
     updateHeaderVisibility();
     window.addEventListener('resize', updateHeaderVisibility);
 
-    signUpButtonEl.addEventListener('click', () => {
+    // ===== AUTH MODAL =====
+    signUpButtonEl?.addEventListener('click', () => {
         authBackdropEl.classList.remove('hidden');
         document.body.classList.add('no-scroll');
     });
 
-    authCloseBtnEl.addEventListener('click', closeAuthModal);
-    authBackdropEl.addEventListener('click', event => {
-        if (event.target === authBackdropEl) closeAuthModal();
+    mobileLoginBtnEl?.addEventListener('click', () => {
+        authBackdropEl.classList.remove('hidden');
+        document.body.classList.add('no-scroll');
     });
 
     function closeAuthModal() {
@@ -143,8 +163,13 @@ export function initHeader() {
         document.body.classList.remove('no-scroll');
     }
 
-    authFormEl.addEventListener('submit', event => {
-        event.preventDefault();
+    authCloseBtnEl?.addEventListener('click', closeAuthModal);
+    authBackdropEl?.addEventListener('click', e => {
+        if (e.target === authBackdropEl) closeAuthModal();
+    });
+
+    authFormEl?.addEventListener('submit', e => {
+        e.preventDefault();
 
         const newUserData = {
             name: document.getElementById('auth-name').value.trim(),
@@ -158,4 +183,14 @@ export function initHeader() {
         authFormEl.reset();
         updateHeaderVisibility();
     });
+
+    // ===== LOGOUT =====
+    function logout() {
+        localStorage.removeItem('user');
+        updateHeaderVisibility();
+        closeMobileMenu();
+    }
+
+    mobileLogoutBtnEl?.addEventListener('click', logout);
+    userBtnEl?.addEventListener('click', logout);
 }

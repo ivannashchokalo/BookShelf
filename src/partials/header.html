@@ -70,9 +70,11 @@
 
 <!-- Mobile menu -->
 <div class="mobile" id="mobile-menu">
+  
 
   <!-- TOP -->
   <div class="mobile-menu">
+    
     <ul class="mob-menu-list">
       <li>
         <a class="mob-menu-link" href="../index.html">Home</a>
@@ -89,19 +91,33 @@
   </div>
 
   <!-- BOTTOM -->
-  <div class="mobile-bottom">
-    <button class="long-bth">
-      Log in
-      <svg class="btn-arrow" width="22" height="22">
-        <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
-      </svg>
-    </button>
+<div class="mobile-bottom">
+  <!-- LOGIN -->
+  <button class="sing-mob-bth" id="mobile-login-btn">
+     Sing up
+    <svg class="btn-arrow" width="22" height="22">
+      <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
+    </svg>
+  </button>
 
-    <div class="image">
-      <img class="mob-books-img" srcset="../img/mob-menu/mob-menu-1x-min.png, ../img/mobile-menu/mob-menu-2x-min.png"
-        src="../img/mobile-menu/mob-menu-1x-min.png" alt="Books illustration" loading="lazy" width="450" />
-    </div>
+  <!-- LOGOUT -->
+  <button class="long-bth hidden" id="mobile-logout-btn">
+    Log out
+    <svg class="btn-arrow" width="22" height="22">
+      <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
+    </svg>
+  </button>
+
+  <div class="image">
+    <img
+      class="mob-books-img"
+      src="../img/mob-menu/mob-menu-1x-min.png"
+      alt="Books illustration"
+      loading="lazy"
+    />
   </div>
+</div>
+
 
 </div>
 
@@ -109,7 +125,7 @@
   <div class="auth-modal">
 
     <button class="auth-close" id="auth-close" aria-label="Close auth modal">
-      <svg class="auth-close-svg" width="28" height="28">
+      <svg class="auth-close-svg">
         <use href="../icons/symbol-defs.svg#icon-x-close"></use>
       </svg>
     </button>
@@ -122,14 +138,14 @@
 
       <div class="auth-input">
         <input type="email" id="auth-email" placeholder="Email" required />
-        <svg class="auth-input-icon" width="28" height="28">
+        <svg class="auth-input-icon">
           <use href="../icons/symbol-defs.svg#icon-mail"></use>
         </svg>
       </div>
 
       <div class="auth-input">
         <input type="password" id="auth-password" placeholder="Password" required />
-        <svg class="auth-input-icon" width="28" height="28">
+        <svg class="auth-input-icon">
           <use href="../icons/symbol-defs.svg#icon-lock"></use>
         </svg>
       </div>
