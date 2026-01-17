@@ -24,15 +24,17 @@ async function handleOpenBookModal(e) {
   }
   const bookId = bookCard.dataset.id;
   const data = await fetchBookById(bookId);
-  console.log(data);
   renderBookModal(data);
   refs.bookModal.showModal();
   refs.bookModal.addEventListener('click', handleModalBtnClick);
+  // bookModalcloseBtn.addEventListener('click', () => refs.bookModal.close());
+  refs.bookModal.addEventListener('click', handleBackdropClick);
 }
 
 function renderBookModal({ _id, book_image, title, author, buy_links }) {
   const linksMarkup = buy_links.map(link => renderBookLink(link)).join('');
-  const markup = `<img class="book-modal-cover" src="${book_image}" alt="Book cover of ${title}">
+  const markup = `<button type="button" class="book-modal-close-btn">✕</button>
+  <img class="book-modal-cover" src="${book_image}" alt="Book cover of ${title}">
   <div class="book-modal-wrap">
   <h3 class="book-modal-title">${title}</h3>
   <p class="book-modal-author">${author}</p>
@@ -85,5 +87,17 @@ function handleModalBtnClick(e) {
   } else {
     addToWishlist(id);
     btn.textContent = 'Remove from shopping list';
+  }
+}
+
+function handleBackdropClick(e) {
+  const rect = refs.bookModal.getBoundingClientRect();
+  const inDialog =
+    e.clientX >= rect.left &&
+    e.clientX <= rect.right &&
+    e.clientY >= rect.top &&
+    e.clientY <= rect.bottom;
+  if (!inDialog) {
+    refs.bookModal.close();
   }
 }
