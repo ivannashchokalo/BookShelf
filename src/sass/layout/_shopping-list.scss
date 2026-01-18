@@ -9,31 +9,9 @@
     margin-bottom: 120px;
 }
 
-.shop-list-empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.shop-list-empty-message {
-    max-width: 244px;
-    margin-bottom: 14px;
-    @include m.font($fs: 14px, $lh: 18px, $ls:-0.02em);
-    text-align: center;
-    color: var(--shopping-empty-list-color);
-}
-
 @media screen and (min-width: 768px) {
     .main-title.main-title-shoppin-list {
         margin-bottom: 140px;
-    }
-
-    .shop-list-empty-message {
-        max-width: 350px;
-        margin-bottom: 20px;
-        @include m.font($fs: 18px, $lh: 18px, $ls:-0.02em);
-
     }
 }
 
@@ -47,4 +25,8 @@
        flex-grow: 1;
     }
 
+}
+
+.charity-hidden {
+    display: none;
 }

@@ -35,16 +35,35 @@ export function getResponsiveCardsLimit() {
 
 export function handleShoppingListResize() {
   const screenType = getScreenType();
+  console.log(screenType);
 
-  if (screenType === STATE.screenType) {
+  if (screenType === STATE.shoppingScreenType) {
     return;
   }
 
-  STATE.screenType = screenType;
+  STATE.shoppingScreenType = screenType;
 
   if (screenType === 'mobile' || screenType === 'tablet') {
-    refs.charity.style.display = 'none';
+    refs.charity.classList.add('is-hidden');
   } else {
-    refs.charity.style.display = '';
+    refs.charity.classList.remove('charity-hidden');
   }
+}
+
+export function showEmptyPage() {
+  const page = document.body.dataset.page;
+
+  refs.emptyList.classList.remove('empty-list-hidden');
+
+  if (page === 'home') {
+    refs.emptyListMessageHome.classList.remove('list-empty-message-hidden');
+    refs.emptyListMessageShopping.classList.add('list-empty-message-hidden');
+  } else if (page === 'shopping-list') {
+    refs.emptyListMessageShopping.classList.remove('list-empty-message-hidden');
+    refs.emptyListMessageHome.classList.add('list-empty-message-hidden');
+  }
+}
+
+export function hideEmptyPage() {
+  refs.emptyList.classList.add('empty-list-hidden');
 }

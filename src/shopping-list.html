@@ -19,41 +19,7 @@
                 Shopping<span>List</span>
               </h1>
               <ul id="books-list" class="books-list"></ul>
-              <div class="shop-list-empty is-hidden">
-                <p class="shop-list-empty-message">
-                  This page is empty, add some books and proceed to order.
-                </p>
-                <picture class="shop-list-empty-img">
-                  <source
-                    srcset="
-                      ./img/shopping-list/books-des-tablet.webp    1x,
-                      ./img/shopping-list/books-des-tablet@2x.webp 2x
-                    "
-                    media="(min-width: 1440px)"
-                  />
-                  <source
-                    srcset="
-                      ./img/shopping-list/books-des-tablet.webp    1x,
-                      ./img/shopping-list/books-des-tablet@2x.webp 2x
-                    "
-                    media="(min-width: 768px)"
-                  />
-                  <source
-                    srcset="
-                      ./img/shopping-list/books-mobile.webp    1x,
-                      ./img/shopping-list/books-mobile@2x.webp 2x
-                    "
-                    media="(max-width: 767px)"
-                  />
-                  <img
-                    class="shop-list-empty-img"
-                    src="./img/shopping-list/books-des-tablet.webp"
-                    alt="Books image"
-                    width="265"
-                    height="198"
-                  />
-                </picture>
-              </div>
+              <load src="./partials/list-empty.html" />
             </div>
           </div>
         </div>
