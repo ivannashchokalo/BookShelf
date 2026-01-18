@@ -1,88 +1,50 @@
-// ================= BASE =================
-.is-hidden {
-    display: none;
+@use "../utils/mixins" as m;
+
+.shopping-list {
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-.shopping-list-aside {
-    display: none;
-
-    @media screen and (min-width: 1440px) {
-        display: block;
-    }
+.main-title.main-title-shoppin-list {
+    margin-bottom: 120px;
 }
 
-// ================= EMPTY STATE (mobile/tablet) =================
 .shop-list-empty {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 14px;
+    justify-content: center;
+}
 
-    width: 100%;
-    max-width: 265px;
-    margin: 120px auto 0;
-    padding: 0;
+.shop-list-empty-message {
+    max-width: 244px;
+    margin-bottom: 14px;
+    @include m.font($fs: 14px, $lh: 18px, $ls:-0.02em);
+    text-align: center;
+    color: var(--shopping-empty-list-color);
+}
 
-    &-message {
-        font-size: 15px;
-        line-height: 1.28571;
-        letter-spacing: -0.02em;
-        text-align: center;
-        color: rgba(0, 0, 0, 0.6);
+@media screen and (min-width: 768px) {
+    .main-title.main-title-shoppin-list {
+        margin-bottom: 140px;
     }
 
-    &-img {
-        // базові стилі, якщо треба — можна додати тут
-    }
+    .shop-list-empty-message {
+        max-width: 350px;
+        margin-bottom: 20px;
+        @include m.font($fs: 18px, $lh: 18px, $ls:-0.02em);
 
-    @media screen and (min-width: 768px) {
-        gap: 20px;
-        max-width: 322px;
-        margin-top: 140px;
-
-        &-message {
-            width: 244px;
-            margin: 0 auto;
-            letter-spacing: -0.28px;
-            font-size: 18px;
-        }
-
-        &-img {
-            width: 322px;
-            height: 241px;
-        }
-    }
-
-    // desktop позиціонування в правій колонці
-    @media screen and (min-width: 1440px) {
-        margin: 0;
-        justify-self: center;
-        align-self: center;
-        max-width: 322px;
     }
 }
 
-// ================= DESKTOP LAYOUT 1440+ =================
 @media screen and (min-width: 1440px) {
     .shopping-list-container {
-        display: grid;
-        grid-template-columns: 356px 1fr;
-        column-gap: 70px;
-        align-items: start;
+        display: flex;
+        gap: 40px;
     }
 
     .shopping-list-content {
-        display: grid;
-        grid-template-rows: auto 1fr auto;
-        min-height: calc(100vh - 600px);
+       flex-grow: 1;
     }
 
-    .shopping-list-books {
-        justify-self: start;
-        align-self: start;
-    }
-
-    #pagination {
-        align-self: end;
-    }
 }

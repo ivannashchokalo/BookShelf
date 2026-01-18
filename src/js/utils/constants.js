@@ -10,6 +10,7 @@ export const refs = {
   loader: document.querySelector('.loader'),
   list: document.getElementById('books-list'),
   empty: document.querySelector('.shop-list-empty'),
+  charity: document.querySelector('.support-wrapper'),
 };
 
 export const STATE = {

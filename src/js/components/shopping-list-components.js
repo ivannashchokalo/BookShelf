@@ -2,8 +2,7 @@ import { refs, WISHLIST_KEY } from '../utils/constants';
 import { loadFromLS, saveToLS } from '../utils/storage';
 import { fetchBookById } from '../utils/books-api';
 import icon from '../../icons/symbol-defs.svg';
-import trash from '../../icons/symbol-defs.svg?url'; 
- 
+import trash from '../../icons/symbol-defs.svg?url';
 
 export function getWishlist() {
   return loadFromLS(WISHLIST_KEY) || [];
@@ -33,10 +32,19 @@ function hideEmpty() {
   refs.empty.classList.add('is-hidden');
 }
 
-function bookCardTemplate(book){ 
-        const { _id, book_image, title, list_name, description, author, amazon_product_url, buy_links } = book;
+function bookCardTemplate(book) {
+  const {
+    _id,
+    book_image,
+    title,
+    list_name,
+    description,
+    author,
+    amazon_product_url,
+    buy_links,
+  } = book;
 
-    return `<li class="shop-list-item" id="${_id}">
+  return `<li class="shop-list-item" id="${_id}">
         <img class="shop-list-img"
             src="${book_image}"
             alt="${title}" />  
@@ -60,7 +68,7 @@ function bookCardTemplate(book){
 export async function renderShoppingList() {
   if (!refs.list || !refs.empty) return;
 
-  const ids = (getWishlist() || []);
+  const ids = getWishlist() || [];
 
   if (!ids.length) {
     showEmpty();

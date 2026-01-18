@@ -1,8 +1,6 @@
 import { getTopBooks } from '../components/main-book-list';
 import { refs, STATE } from './constants';
 
-
-
 export async function handleHomeResize() {
   const screenType = getScreenType();
   if (screenType === STATE.screenType) {
@@ -35,3 +33,18 @@ export function getResponsiveCardsLimit() {
   return limits[screenType];
 }
 
+export function handleShoppingListResize() {
+  const screenType = getScreenType();
+
+  if (screenType === STATE.screenType) {
+    return;
+  }
+
+  STATE.screenType = screenType;
+
+  if (screenType === 'mobile' || screenType === 'tablet') {
+    refs.charity.style.display = 'none';
+  } else {
+    refs.charity.style.display = '';
+  }
+}
