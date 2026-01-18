@@ -1,9 +1,23 @@
 import { fetchBookById } from '../utils/books-api';
 import { refs } from '../utils/constants';
+import {
+  addToWishlist,
+  isInWishlist,
+  removeFromWishlist,
+} from './shopping-list-components';
 
-export function initBookModal() {}
+import amazonLogo from '../../img/book-modal/amazon.svg';
+import appleLogo from '../../img/book-modal/apple-books.svg';
+import barnerAndNobleLogo from '../../img/book-modal/barner-and-noble.svg';
+import bamLogo from '../../img/book-modal/books-a-million.svg';
+import bookshopLogo from '../../img/book-modal/bookshop.svg';
+import defaultLogo from '../../img/book-modal/default.svg';
 
-export async function handleOpenBookModal(e) {
+export function initBookModal() {
+  refs.mainBookList.addEventListener('click', handleOpenBookModal);
+}
+
+async function handleOpenBookModal(e) {
   const bookCard = e.target.closest('li.book-card');
   if (!bookCard) {
     return;
@@ -12,17 +26,64 @@ export async function handleOpenBookModal(e) {
   const data = await fetchBookById(bookId);
   console.log(data);
   renderBookModal(data);
-
   refs.bookModal.showModal();
+  refs.bookModal.addEventListener('click', handleModalBtnClick);
 }
 
 function renderBookModal({ _id, book_image, title, author, buy_links }) {
+  const linksMarkup = buy_links.map(link => renderBookLink(link)).join('');
   const markup = `<img class="book-modal-cover" src="${book_image}" alt="Book cover of ${title}">
   <div class="book-modal-wrap">
   <h3 class="book-modal-title">${title}</h3>
   <p class="book-modal-author">${author}</p>
-  <div class="book-modal-shops-wrap></div>
-  <button class="book-modal-btn" data-id="${_id}">Add to shopping list</button>
+  <div class="book-modal-shops-wrap">${linksMarkup}</div>
+  <button type="button" class="book-modal-btn" data-id="${_id}">Add to shopping list</button>
   </div>`;
   refs.bookModal.innerHTML = markup;
+}
+
+function renderBookLink({ name, url }) {
+  let logoSrc;
+  switch (name) {
+    case 'Amazon':
+      logoSrc = amazonLogo;
+      break;
+    case 'Apple Books':
+      logoSrc = appleLogo;
+      break;
+    case 'Barnes & Noble':
+    case 'Barnes and Noble':
+      logoSrc = barnerAndNobleLogo;
+      break;
+    case 'Books-A-Million':
+      logoSrc = bamLogo;
+      break;
+    case 'Bookshop.org':
+      logoSrc = bookshopLogo;
+      break;
+    default:
+      logoSrc = defaultLogo;
+  }
+  return `<li class="modal-book-link-item">
+  <a class="modal-book-link" href="${url}"  target="_blank" rel="noopener noreferrer nofollow">
+  <img src="${logoSrc}" alt="${name} logo" class="modal-book-logo"/>
+  </a>
+  </li>`;
+}
+
+function handleModalBtnClick(e) {
+  e.preventDefault();
+  const btn = e.target.closest('.book-modal-btn');
+  if (!btn) return;
+
+  const id = btn.dataset.id;
+  if (!id) return;
+
+  if (isInWishlist(id)) {
+    removeFromWishlist(id);
+    btn.textContent = 'Add to shopping list';
+  } else {
+    addToWishlist(id);
+    btn.textContent = 'Remove from shopping list';
+  }
 }

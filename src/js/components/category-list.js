@@ -1,5 +1,7 @@
 import { fetchAllCategories, fetchBookByCategory } from '../utils/books-api';
 import { refs, STATE } from '../utils/constants';
+import { hideLoader, showLoader } from '../utils/loader';
+import { notyf } from '../utils/notifications';
 import { getTopBooks, renderBooksListByCategory } from './main-book-list';
 
 export async function initCategoryList() {
@@ -8,6 +10,7 @@ export async function initCategoryList() {
     renderCategories(categories);
   } catch (error) {
     console.log(error);
+    notyf.error('An error occurred while loading');
   }
   refs.categoriesList.addEventListener('click', handleCategoryClick);
 }
@@ -36,6 +39,9 @@ async function handleCategoryClick(e) {
   if (prevBtn) prevBtn.classList.remove('current');
   e.target.classList.add('current');
 
+  refs.mainBookList.innerHTML = '';
+  showLoader();
+
   try {
     if (categoryName === 'All categories') {
       refs.mainBookList.dataset.booklist = 'top-books';
@@ -54,5 +60,8 @@ async function handleCategoryClick(e) {
     }
   } catch (error) {
     console.log(error);
+    notyf.error('An error occurred while loading');
+  } finally {
+    hideLoader();
   }
 }

@@ -7,9 +7,11 @@ export const refs = {
   arrowElem: document.querySelector('.swiper-button-icon'),
   scrollUpBtn: document.querySelector('.scroll-up'),
   bookModal: document.querySelector('.book-modal'),
+  loader: document.querySelector('.loader')
 };
 
 export const STATE = {
   screenType: 'mobile', // "desktop", "tablet", "mobile"
 };
 
+export const WISHLIST_KEY = 'wishlist';
