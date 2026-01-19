@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping list</title>
     <script type="module" crossorigin src="/BookShelf/assets/vendor-D9UGMLfO.js"></script>
-    <script type="module" crossorigin src="/BookShelf/assets/main-DJYZ801G.js"></script>
+    <script type="module" crossorigin src="/BookShelf/assets/main-fDWLdXrX.js"></script>
     <link rel="stylesheet" crossorigin href="/BookShelf/assets/vendor-C6_ZQafJ.css">
-    <link rel="stylesheet" crossorigin href="/BookShelf/assets/main-DrJNijqV.css">
+    <link rel="stylesheet" crossorigin href="/BookShelf/assets/main-3zFqBSJI.css">
   </head>
   <body data-page="shopping-list">
     <header class="header">
@@ -48,7 +48,212 @@
               <h1 class="main-title main-title-shoppin-list">
                 Shopping<span>List</span>
               </h1>
-              <ul id="books-list" class="books-list"></ul>
+              <ul id="books-list" class="books-list">
+                <li class="shop-list-item" id="${_id}">
+                  <img
+                    class="shop-list-img"
+                    src="/BookShelf/assets/Rectangle%2013-ChZU3dk5.png"
+                    alt="${title}"
+                    width="116"
+                    height="165"
+                  />
+                  <div class="book-info">
+                    <h1 class="book-card-title">I will find you</h1>
+                    <p class="book-category">Hardcover fiction</p>
+                    <p class="book-description">
+                      David Burroughs was once a devoted father to his
+                      three-year-old son Matthew, living a dream life just a
+                      short drive away from the working-class suburb where he
+                      and his wife, Cheryl, first fell in love--until one
+                      fateful night when David woke suddenly to discover Matthew
+                      had been murdered while David was asleep just down the
+                      hall.
+                    </p>
+                    <p class="book-card-author">Harlan Coben</p>
+                  </div>
+                  <!-- <ul class="book-shop-links">
+                    <li>
+                      <a href="${amazon_product_url}" target="_blank"
+                        ><svg class="book-shop-img amazon-logo">
+                          <use href="${icon}#icon-amazon"></use></svg
+                        >AMAZONE</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="book-shop-link"
+                        href="${buy_links[1].url}"
+                        target="_blank"
+                        ><svg class="book-shop-img apple-books-logo">
+                          <use href="${icon}#icon-ibooks"></use></svg
+                        >BOOK</a
+                      >
+                    </li>
+                  </ul> -->
+                  <button
+                    class="shop-list-delete-btn"
+                    data-id="${_id}"
+                    aria-label="Remove book"
+                  >
+                    <svg class="delete-btn-icon">
+                      <use href="${trash}#icon-trash"></use>
+                    </svg>
+                  </button>
+                </li>
+                <li class="shop-list-item" id="${_id}">
+                  <img
+                    class="shop-list-img"
+                    src="/BookShelf/assets/Rectangle%2013-ChZU3dk5.png"
+                    alt="${title}"
+                    width="116"
+                    height="165"
+                  />
+                  <div class="book-info">
+                    <h1 class="book-card-title">I will find you</h1>
+                    <p class="book-category">Hardcover fiction</p>
+                    <p class="book-description">
+                      David Burroughs was once a devoted father to his
+                      three-year-old son Matthew, living a dream life just a
+                      short drive away from the working-class suburb where he
+                      and his wife, Cheryl, first fell in love--until one
+                      fateful night when David woke suddenly to discover Matthew
+                      had been murdered while David was asleep just down the
+                      hall.
+                    </p>
+                    <p class="book-card-author">Harlan Coben</p>
+                  </div>
+                  <!-- <ul class="book-shop-links">
+                    <li>
+                      <a href="${amazon_product_url}" target="_blank"
+                        ><svg class="book-shop-img amazon-logo">
+                          <use href="${icon}#icon-amazon"></use></svg
+                        >AMAZONE</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="book-shop-link"
+                        href="${buy_links[1].url}"
+                        target="_blank"
+                        ><svg class="book-shop-img apple-books-logo">
+                          <use href="${icon}#icon-ibooks"></use></svg
+                        >BOOK</a
+                      >
+                    </li>
+                  </ul> -->
+                  <button
+                    class="shop-list-delete-btn"
+                    data-id="${_id}"
+                    aria-label="Remove book"
+                  >
+                    <svg class="delete-btn-icon">
+                      <use href="${trash}#icon-trash"></use>
+                    </svg>
+                  </button>
+                </li>
+                <li class="shop-list-item" id="${_id}">
+                  <img
+                    class="shop-list-img"
+                    src="/BookShelf/assets/Rectangle%2013-ChZU3dk5.png"
+                    alt="${title}"
+                    width="116"
+                    height="165"
+                  />
+                  <div class="book-info">
+                    <h1 class="book-card-title">I will find you</h1>
+                    <p class="book-category">Hardcover fiction</p>
+                    <p class="book-description">
+                      David Burroughs was once a devoted father to his
+                      three-year-old son Matthew, living a dream life just a
+                      short drive away from the working-class suburb where he
+                      and his wife, Cheryl, first fell in love--until one
+                      fateful night when David woke suddenly to discover Matthew
+                      had been murdered while David was asleep just down the
+                      hall.
+                    </p>
+                    <p class="book-card-author">Harlan Coben</p>
+                  </div>
+                  <!-- <ul class="book-shop-links">
+                    <li>
+                      <a href="${amazon_product_url}" target="_blank"
+                        ><svg class="book-shop-img amazon-logo">
+                          <use href="${icon}#icon-amazon"></use></svg
+                        >AMAZONE</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="book-shop-link"
+                        href="${buy_links[1].url}"
+                        target="_blank"
+                        ><svg class="book-shop-img apple-books-logo">
+                          <use href="${icon}#icon-ibooks"></use></svg
+                        >BOOK</a
+                      >
+                    </li>
+                  </ul> -->
+                  <button
+                    class="shop-list-delete-btn"
+                    data-id="${_id}"
+                    aria-label="Remove book"
+                  >
+                    <svg class="delete-btn-icon">
+                      <use href="${trash}#icon-trash"></use>
+                    </svg>
+                  </button>
+                </li>
+                <li class="shop-list-item" id="${_id}">
+                  <img
+                    class="shop-list-img"
+                    src="/BookShelf/assets/Rectangle%2013-ChZU3dk5.png"
+                    alt="${title}"
+                    width="116"
+                    height="165"
+                  />
+                  <div class="book-info">
+                    <h1 class="book-card-title">I will find you</h1>
+                    <p class="book-category">Hardcover fiction</p>
+                    <p class="book-description">
+                      David Burroughs was once a devoted father to his
+                      three-year-old son Matthew, living a dream life just a
+                      short drive away from the working-class suburb where he
+                      and his wife, Cheryl, first fell in love--until one
+                      fateful night when David woke suddenly to discover Matthew
+                      had been murdered while David was asleep just down the
+                      hall.
+                    </p>
+                    <p class="book-card-author">Harlan Coben</p>
+                  </div>
+                  <!-- <ul class="book-shop-links">
+                    <li>
+                      <a href="${amazon_product_url}" target="_blank"
+                        ><svg class="book-shop-img amazon-logo">
+                          <use href="${icon}#icon-amazon"></use></svg
+                        >AMAZONE</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="book-shop-link"
+                        href="${buy_links[1].url}"
+                        target="_blank"
+                        ><svg class="book-shop-img apple-books-logo">
+                          <use href="${icon}#icon-ibooks"></use></svg
+                        >BOOK</a
+                      >
+                    </li>
+                  </ul> -->
+                  <button
+                    class="shop-list-delete-btn"
+                    data-id="${_id}"
+                    aria-label="Remove book"
+                  >
+                    <svg class="delete-btn-icon">
+                      <use href="${trash}#icon-trash"></use>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
               <div class="list-empty">
   <p class="list-empty-message list-empty-message-shopping">
     This page is empty, add some books and proceed to order.
