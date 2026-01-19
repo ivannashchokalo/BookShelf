@@ -1,7 +1,7 @@
 <header class="header">
   <div class="container container-header">
     <nav class="header-nav">
-      <!-- Логотип -->
+
       <a class="header-logo" href="../index.html">
         <svg class="header-logo-svg" width="24" height="24">
           <use href="../icons/symbol-defs.svg#icon-logo"></use>
@@ -9,8 +9,7 @@
         Bookshelf
       </a>
 
-      <!-- Desktop navigation -->
-      <div class="desktop-nav  hidden" id="desktop-nav">
+      <div class="desktop-nav hidden" id="desktop-nav">
         <ul class="menu-ul">
           <li class="menu-li-home">
             <a href="../index.html" class="menu-home">Home</a>
@@ -26,40 +25,34 @@
         </ul>
       </div>
 
-      <!-- Theme toggle -->
       <div class="toggle" aria-label="Theme switch"></div>
 
-      <!-- Sign up -->
-      <button class="header-btn" id="sign-up-btn">
+      <button class="header-btn" id="header-sign-up-btn">
         Sign up
         <svg class="btn-arrow" width="22" height="22">
           <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
         </svg>
       </button>
 
-      <!--User-->
-      <button type="button" class="user-btn hidden" id="user-btn">
+      <button type="button" class="user-btn hidden" id="header-user-btn">
         <span class="user-avatar">
           <svg class="user-avatar-default" width="13" height="17">
             <use href="../icons/symbol-defs.svg#icon-user"></use>
           </svg>
         </span>
-
-        <span class="user-name" id="user-name"></span>
-
+        <span class="user-name" id="header-user-name"></span>
         <svg class="user-arrow" width="23" height="26">
           <use href="../icons/symbol-defs.svg#icon-down-arrow"></use>
         </svg>
       </button>
 
-      <!-- Burger buttons -->
-      <button type="button" class="header-menu" id="menu" aria-label="Open menu" data-modal-open>
+      <button type="button" class="header-menu" id="menu-open-btn">
         <svg class="header-menu-svg" width="28" height="28">
           <use href="../icons/symbol-defs.svg#icon-burger-menu"></use>
         </svg>
       </button>
 
-      <button type="button" class="header-menu-close disabled" id="menu-close" aria-label="Close menu" data-modal-close>
+      <button type="button" class="header-menu-close disabled" id="menu-close-btn">
         <svg class="header-menu-close-svg" width="22" height="22">
           <use href="../icons/symbol-defs.svg#icon-x-close"></use>
         </svg>
@@ -68,17 +61,19 @@
   </div>
 </header>
 
-<!-- Mobile menu -->
 <div class="mobile" id="mobile-menu">
-  
 
-  <!-- TOP -->
   <div class="mobile-menu">
-    
+    <button type="button" class="user-btn user-btn-mobile hidden" id="mob-user-btn">
+      <span class="user-avatar">
+        <svg class="user-avatar-default" width="13" height="17">
+          <use href="../icons/symbol-defs.svg#icon-user"></use>
+        </svg>
+      </span>
+      <span class="user-name" id="mob-user-name"></span>
+    </button>
     <ul class="mob-menu-list">
-      <li>
-        <a class="mob-menu-link" href="../index.html">Home</a>
-      </li>
+      <li><a class="mob-menu-link" href="../index.html">Home</a></li>
       <li>
         <a class="mob-menu-list-link" href="../shopping-list.html">
           Shopping List
@@ -90,35 +85,29 @@
     </ul>
   </div>
 
-  <!-- BOTTOM -->
-<div class="mobile-bottom">
-  <!-- LOGIN -->
-  <button class="sing-mob-bth" id="mobile-login-btn">
-     Sing up
-    <svg class="btn-arrow" width="22" height="22">
-      <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
-    </svg>
-  </button>
+  <div class="mobile-bottom">
 
-  <!-- LOGOUT -->
-  <button class="long-bth hidden" id="mobile-logout-btn">
-    Log out
-    <svg class="btn-arrow" width="22" height="22">
-      <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
-    </svg>
-  </button>
+    <button class="sing-mob-bth" id="mob-login-btn">
+      Sign up
+      <svg class="btn-arrow" width="22" height="22">
+        <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
+      </svg>
+    </button>
 
-  <div class="image">
-    <img
-      class="mob-books-img"
-      src="../img/mob-menu/mob-menu-1x-min.png"
-      alt="Books illustration"
-      loading="lazy"
-    />
+    <button class="long-bth hidden" id="mob-logout-btn">
+      Log out
+      <svg class="btn-arrow" width="22" height="22">
+        <use href="../icons/symbol-defs.svg#icon-arrow-right"></use>
+      </svg>
+    </button>
+
+    <div class="image">
+      <img class="mob-books-img" src="../img/mob-menu/mob-menu-1x-min.png" srcset="
+      ../img/mob-menu/mob-menu-1x-min.png 1x,
+      ../img/mob-menu/mob-menu-2x-min.png 2x
+    " alt="Books illustration" />
+    </div>
   </div>
-</div>
-
-
 </div>
 
 <div class="auth-backdrop hidden" id="auth-backdrop">

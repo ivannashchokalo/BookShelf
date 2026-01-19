@@ -1,196 +1,180 @@
 export function initHeader() {
-    const currentPathname = window.location.pathname;
+    // ================= STATE =================
+    let currentUser = JSON.parse(sessionStorage.getItem('user'));
 
-    const mobileUserEl = document.getElementById('mobile-user');
-const mobileUserNameEl = document.getElementById('mobile-user-name');
+    // ================= ELEMENTS =================
+    const themeToggleBtn = document.querySelector('.toggle');
 
+    const desktopNav = document.getElementById('desktop-nav');
+    const signUpBtn = document.getElementById('header-sign-up-btn');
+    const userBtn = document.getElementById('header-user-btn');
+    const userNameEl = document.getElementById('header-user-name');
 
-    // ===== MENU LINKS =====
-    const desktopHomeLinkEl = document.querySelector('.menu-home');
-    const desktopShoppingLinkEl = document.querySelector('.menu-shopping-list');
-    const mobileHomeLinkEl = document.querySelector('.mob-menu-link');
-    const mobileShoppingLinkEl = document.querySelector('.mob-menu-list-link');
+    const mobMenu = document.getElementById('mobile-menu');
+    const mobLoginBtn = document.getElementById('mob-login-btn');
+    const mobLogoutBtn = document.getElementById('mob-logout-btn');
+    const mobUserBtn = document.getElementById('mob-user-btn');
+    const mobUserName = document.getElementById('mob-user-name');
 
-    // ===== HEADER / AUTH ELEMENTS =====
-    const signUpButtonEl = document.getElementById('sign-up-btn');
-    const userNameTextEl = document.getElementById('user-name');
-    const desktopNavEl = document.getElementById('desktop-nav');
-    const userBtnEl = document.getElementById('user-btn');
+    const burgerOpenBtn = document.getElementById('menu-open-btn');
+    const burgerCloseBtn = document.getElementById('menu-close-btn');
 
-    const authBackdropEl = document.getElementById('auth-backdrop');
-    const authCloseBtnEl = document.getElementById('auth-close');
-    const authFormEl = document.getElementById('auth-form');
+    const authBackdrop = document.getElementById('auth-backdrop');
+    const authForm = document.getElementById('auth-form');
+    const authCloseBtn = document.getElementById('auth-close');
 
-    // ===== MOBILE AUTH BUTTONS =====
-    const mobileLoginBtnEl = document.getElementById('mobile-login-btn');
-    const mobileLogoutBtnEl = document.getElementById('mobile-logout-btn');
-
-    // ===== THEME TOGGLE =====
-    const themeToggleBtnEl = document.querySelector('.toggle');
-    if (themeToggleBtnEl) {
-        const storedTheme = localStorage.getItem('theme');
-
-        if (storedTheme === 'dark') {
+    // ================= THEME =================
+    if (themeToggleBtn) {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
             document.documentElement.setAttribute('data-theme', 'dark');
-            themeToggleBtnEl.classList.add('active');
+            themeToggleBtn.classList.add('active');
         }
 
-        themeToggleBtnEl.addEventListener('click', () => {
+        themeToggleBtn.addEventListener('click', () => {
             const isDark =
                 document.documentElement.getAttribute('data-theme') === 'dark';
 
             if (isDark) {
                 document.documentElement.removeAttribute('data-theme');
                 localStorage.setItem('theme', 'light');
-                themeToggleBtnEl.classList.remove('active');
+                themeToggleBtn.classList.remove('active');
             } else {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 localStorage.setItem('theme', 'dark');
-                themeToggleBtnEl.classList.add('active');
+                themeToggleBtn.classList.add('active');
             }
         });
     }
 
-    // ===== BURGER / MOBILE MENU =====
-    const burgerOpenBtnEl = document.querySelector('#menu');
-    const burgerCloseBtnEl = document.querySelector('#menu-close');
-    const mobileMenuContainerEl = document.querySelector('#mobile-menu');
+    // ================= ACTIVE LINKS =================
+    function setActiveLinks() {
+        let currentPage = window.location.pathname;
 
-    function openMobileMenu() {
-        mobileMenuContainerEl.classList.add('is-open');
-        burgerOpenBtnEl.classList.add('disabled');
-        burgerCloseBtnEl.classList.remove('disabled');
-        document.body.classList.add('no-scroll');
-    }
-
-    function closeMobileMenu() {
-        mobileMenuContainerEl.classList.remove('is-open');
-        burgerOpenBtnEl.classList.remove('disabled');
-        burgerCloseBtnEl.classList.add('disabled');
-        document.body.classList.remove('no-scroll');
-    }
-
-    burgerOpenBtnEl?.addEventListener('click', openMobileMenu);
-    burgerCloseBtnEl?.addEventListener('click', closeMobileMenu);
-
-    window.addEventListener('keydown', e => {
-        if (e.key === 'Escape') closeMobileMenu();
-    });
-
-    mobileMenuContainerEl?.addEventListener('click', e => {
-        if (e.target.closest('a')) closeMobileMenu();
-    });
-
-    // ===== HEADER VISIBILITY (CORE LOGIC) =====
-    function updateHeaderVisibility() {
-        const isMobile = window.innerWidth < 768;
-        const storedUser = localStorage.getItem('user');
-        const isAuthorized = Boolean(storedUser);
-
-        // MENU LINKS
-        [
-            desktopHomeLinkEl,
-            desktopShoppingLinkEl,
-            mobileHomeLinkEl,
-            mobileShoppingLinkEl,
-        ].forEach(el => {
-            if (!el) return;
-            el.classList.toggle('hidden', !isAuthorized);
-        });
-
-        // DESKTOP HEADER
-        if (isMobile) {
-            desktopNavEl.classList.add('hidden');
-            signUpButtonEl.classList.add('hidden');
-            userBtnEl.classList.add('hidden');
+        if (currentPage === '/' || currentPage.endsWith('/')) {
+            currentPage = 'index.html';
         } else {
-            desktopNavEl.classList.remove('hidden');
-
-            if (isAuthorized) {
-                signUpButtonEl.classList.add('hidden');
-                userBtnEl.classList.remove('hidden');
-            } else {
-                signUpButtonEl.classList.remove('hidden');
-                userBtnEl.classList.add('hidden');
-            }
+            currentPage = currentPage.split('/').pop();
         }
 
-        // MOBILE AUTH BUTTONS
-        if (mobileLoginBtnEl && mobileLogoutBtnEl) {
-            mobileLoginBtnEl.classList.toggle('hidden', isAuthorized);
-            mobileLogoutBtnEl.classList.toggle('hidden', !isAuthorized);
+        const links = document.querySelectorAll(
+            '.menu-home, .menu-shopping-list, .mob-menu-link, .mob-menu-list-link'
+        );
+
+        links.forEach(link => {
+            const href = link.getAttribute('href')?.split('/').pop();
+            link.classList.toggle('active', href === currentPage);
+        });
+    }
+
+
+    // ================= HEADER VISIBILITY =================
+    function updateHeader() {
+        const isMobile = window.innerWidth < 768;
+        const isAuth = Boolean(currentUser);
+
+        document
+            .querySelectorAll('.menu-shopping-list, .mob-menu-list-link')
+            .forEach(link => {
+                link.parentElement.style.display = isAuth ? 'block' : 'none';
+            });
+
+        if (isMobile) {
+            desktopNav.classList.add('hidden');
+            signUpBtn.classList.add('hidden');
+            userBtn.classList.add('hidden');
+
+            mobLoginBtn.classList.toggle('hidden', isAuth);
+            mobLogoutBtn.classList.toggle('hidden', !isAuth);
+            mobUserBtn.classList.toggle('hidden', !isAuth);
+
+            if (isAuth) mobUserName.textContent = currentUser.name;
+        } else {
+            desktopNav.classList.toggle('hidden', !isAuth);
+            signUpBtn.classList.toggle('hidden', isAuth);
+            userBtn.classList.toggle('hidden', !isAuth);
+
+            if (isAuth) userNameEl.textContent = currentUser.name;
         }
     }
 
-    // ===== ACTIVE MENU (ONLY IF AUTHORIZED) =====
-    if (localStorage.getItem('user')) {
-        if (
-            currentPathname.includes('index.html') ||
-            currentPathname.endsWith('/')
-        ) {
-            desktopHomeLinkEl?.classList.add('active');
-            mobileHomeLinkEl?.classList.add('active');
-        }
+    // ================= MOBILE MENU =================
+    const openMenu = () => {
+        mobMenu.classList.add('is-open');
+        burgerOpenBtn.classList.add('disabled');
+        burgerCloseBtn.classList.remove('disabled');
+        document.body.style.overflow = 'hidden';
+    };
 
-        if (currentPathname.includes('shopping-list.html')) {
-            desktopShoppingLinkEl?.classList.add('active');
-            mobileShoppingLinkEl?.classList.add('active');
-        }
-    }
+    const closeMenu = () => {
+        mobMenu.classList.remove('is-open');
+        burgerOpenBtn.classList.remove('disabled');
+        burgerCloseBtn.classList.add('disabled');
+        document.body.style.overflow = '';
+    };
 
-    // ===== LOAD USER DATA =====
-    const storedUserData = JSON.parse(localStorage.getItem('user'));
-    if (storedUserData && userNameTextEl) {
-        userNameTextEl.textContent = storedUserData.name;
-    }
+    burgerOpenBtn.addEventListener('click', openMenu);
+    burgerCloseBtn.addEventListener('click', closeMenu);
 
-    updateHeaderVisibility();
-    window.addEventListener('resize', updateHeaderVisibility);
+    // ================= MOBILE MENU LINKS =================
+    const mobileNavLinks = document.querySelectorAll(
+        '.mob-menu-link, .mob-menu-list-link'
+    );
 
-    // ===== AUTH MODAL =====
-    signUpButtonEl?.addEventListener('click', () => {
-        authBackdropEl.classList.remove('hidden');
-        document.body.classList.add('no-scroll');
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            closeMenu();
+            setTimeout(setActiveLinks, 0);
+        });
     });
 
-    mobileLoginBtnEl?.addEventListener('click', () => {
-        authBackdropEl.classList.remove('hidden');
-        document.body.classList.add('no-scroll');
-    });
+    // ================= AUTH MODAL =================
+    const openAuth = () => {
+        authBackdrop.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    };
 
-    function closeAuthModal() {
-        authBackdropEl.classList.add('hidden');
-        document.body.classList.remove('no-scroll');
-    }
+    const closeAuth = () => {
+        authBackdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+    };
 
-    authCloseBtnEl?.addEventListener('click', closeAuthModal);
-    authBackdropEl?.addEventListener('click', e => {
-        if (e.target === authBackdropEl) closeAuthModal();
-    });
+    signUpBtn.addEventListener('click', openAuth);
+    mobLoginBtn.addEventListener('click', openAuth);
+    authCloseBtn.addEventListener('click', closeAuth);
 
-    authFormEl?.addEventListener('submit', e => {
+    // ================= LOGIN =================
+    authForm.addEventListener('submit', e => {
         e.preventDefault();
+        const name = document.getElementById('auth-name').value.trim();
 
-        const newUserData = {
-            name: document.getElementById('auth-name').value.trim(),
-            email: document.getElementById('auth-email').value.trim(),
-        };
+        currentUser = { name };
+        sessionStorage.setItem('user', JSON.stringify(currentUser));
 
-        localStorage.setItem('user', JSON.stringify(newUserData));
-        userNameTextEl.textContent = newUserData.name;
-
-        closeAuthModal();
-        authFormEl.reset();
-        updateHeaderVisibility();
+        updateHeader();
+        setActiveLinks();
+        closeAuth();
+        authForm.reset();
     });
 
-    // ===== LOGOUT =====
-    function logout() {
-        localStorage.removeItem('user');
-        updateHeaderVisibility();
-        closeMobileMenu();
-    }
+    // ================= LOGOUT =================
+    const logout = () => {
+        currentUser = null;
+        sessionStorage.removeItem('user');
+        updateHeader();
+        setActiveLinks();
+        closeMenu();
+    };
 
-    mobileLogoutBtnEl?.addEventListener('click', logout);
-    userBtnEl?.addEventListener('click', logout);
+    userBtn.addEventListener('click', logout);
+    mobLogoutBtn.addEventListener('click', logout);
+
+    // ================= INIT =================
+    window.addEventListener('resize', () => {
+        updateHeader();
+        setActiveLinks();
+    });
+
+    updateHeader();
+    setActiveLinks();
 }

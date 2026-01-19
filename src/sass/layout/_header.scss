@@ -123,6 +123,7 @@
 
 .user-avatar-default {
     fill: var(--violet);
+    width: 23px;
 }
 
 .user-name {
@@ -163,14 +164,13 @@
     position: fixed;
     inset: 0;
     z-index: 1000;
-    display: flex;
-    background: radial-gradient(189.32% 190.93% at 59.76% -23.42%,
-            #4f2ee8 18.03%,
-            #fff 100%);
+    // display: flex;
+    background: var(--support-gradient);
     transform: translateX(100%);
-    opacity: 0;
-    pointer-events: none;
+    // opacity: 0;
+    // pointer-events: none;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
 .mobile.is-open {
@@ -181,7 +181,8 @@
 
 .mobile-menu {
     display: flex;
-    justify-content: center;
+    // justify-content: center;
+    // margin-top: 247px;
 }
 
 .mob-menu-list {
@@ -190,6 +191,8 @@
     gap: 16px;
     align-items: flex-start;
     text-transform: uppercase;
+    margin-top: 247px;
+    z-index: 5;
 }
 
 .mobile-menu a {
@@ -206,6 +209,14 @@
 
 .list-svg {
     fill: currentColor;
+}
+
+.user-btn-mobile {
+    height: 37px;
+    background-color: inherit;
+    z-index: 12;
+    margin-top: 84px;
+    margin-left: 20px;
 }
 
 /* ================= MOBILE BOTTOM ================= */
@@ -247,13 +258,17 @@
     font-size: 14px;
     letter-spacing: -0.04em;
     color: var(--black);
+    margin-top: 327px;
+    margin-left: 20px;
+    z-index: 10;
 }
 
 .image {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 .mob-books-img {
@@ -322,9 +337,9 @@
     transform: translateY(-50%);
     width: 18px;
     height: 18px;
-stroke-width: 2px;
-stroke: var(--black);
-fill: none;
+    stroke-width: 2px;
+    stroke: var(--black);
+    fill: none;
 }
 
 .auth-submit {
@@ -349,7 +364,7 @@ fill: none;
 
     .menu-ul {
         display: flex;
-        gap: 24px;
+        gap: 8px;
         align-items: center;
     }
 
@@ -408,7 +423,7 @@ fill: none;
         margin-top: 12px;
     }
 
-    .auth-input-icon{
+    .auth-input-icon {
         width: 28px;
         height: 28px;
     }
@@ -420,10 +435,6 @@ fill: none;
 
     .container-header {
         padding: 22px 24px;
-    }
-
-    .menu-ul {
-        gap: 36px;
     }
 
     .header-logo {
