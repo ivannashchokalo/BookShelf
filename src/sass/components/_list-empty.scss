@@ -1,10 +1,15 @@
 @use "../utils/mixins" as m;
 
+.shopping-list-books {
+    height: 100%;
+}
+
 .list-empty {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .list-empty-message {

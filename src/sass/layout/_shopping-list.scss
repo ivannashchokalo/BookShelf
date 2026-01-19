@@ -1,32 +1,93 @@
-@use "../utils/mixins" as m;
+@use '../utils/mixins' as m;
 
 .shopping-list {
-    padding-top: 40px;
-    padding-bottom: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  height: 100%;
 }
 
-.main-title.main-title-shoppin-list {
-    margin-bottom: 120px;
+.shop-list-item {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  border: 2px solid rgba(79, 46, 232, 0.4);
+  border-radius: 16px;
+  padding: 14px;
+  background-color: var(--card-bg-color);
+}
+
+.shop-list-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.shop-list-img {
+  width: 100px;
+  height: 142px;
+}
+
+.book-category {
+  margin-bottom: 8px;
+  @include m.font($fs: 12px, $lh: 14px, $ls: 0.03em);
+  color: var(--secondary-text-color);
+}
+
+.book-description {
+  margin-bottom: 34px;
+  @include m.font($fs: 14px, $lh: 18px);
+  color: var(--primary-text-color);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* кількість рядків */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.shop-list-delete-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  line-height: 0;
+  border-radius: 100%;
 }
 
 @media screen and (min-width: 768px) {
-    .main-title.main-title-shoppin-list {
-        margin-bottom: 140px;
-    }
+  .shop-list-item {
+    padding: 24px;
+  }
+  .shop-list-img {
+    width: 116px;
+    height: 165px;
+  }
+
+  .book-category {
+    margin-bottom: 14px;
+  }
+
+  .book-description {
+    margin-bottom: 48px;
+  }
+
+  .shop-list-delete-btn {
+    top: 24px;
+    right: 24px;
+    width: 34px;
+    height: 34px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .shopping-list-container {
-        display: flex;
-        gap: 40px;
-    }
+  .shopping-list-container {
+    display: flex;
+    gap: 40px;
+  }
 
-    .shopping-list-content {
-       flex-grow: 1;
-    }
-
+  .shopping-list-content {
+    flex-grow: 1;
+  }
 }
 
 .charity-hidden {
-    display: none;
+  display: none;
 }
