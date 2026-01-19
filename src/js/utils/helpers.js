@@ -35,7 +35,6 @@ export function getResponsiveCardsLimit() {
 
 export function handleShoppingListResize() {
   const screenType = getScreenType();
-  console.log(screenType);
 
   if (screenType === STATE.shoppingScreenType) {
     return;
