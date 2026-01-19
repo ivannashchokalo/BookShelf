@@ -7,11 +7,20 @@ export const refs = {
   arrowElem: document.querySelector('.swiper-button-icon'),
   scrollUpBtn: document.querySelector('.scroll-up'),
   bookModal: document.querySelector('.book-modal'),
-  loader: document.querySelector('.loader')
+  loader: document.querySelector('.loader'),
+  list: document.getElementById('books-list'),
+  empty: document.querySelector('.shop-list-empty'),
+  charity: document.querySelector('.support-wrapper'),
+  emptyList: document.querySelector('.list-empty'),
+  emptyListMessageShopping: document.querySelector(
+    '.list-empty-message-shopping'
+  ),
+  emptyListMessageHome: document.querySelector('.list-empty-message-home'),
 };
 
 export const STATE = {
   screenType: 'mobile', // "desktop", "tablet", "mobile"
+  shoppingScreenType: null,
 };
 
 export const WISHLIST_KEY = 'wishlist';

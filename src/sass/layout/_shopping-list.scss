@@ -1,0 +1,32 @@
+@use "../utils/mixins" as m;
+
+.shopping-list {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.main-title.main-title-shoppin-list {
+    margin-bottom: 120px;
+}
+
+@media screen and (min-width: 768px) {
+    .main-title.main-title-shoppin-list {
+        margin-bottom: 140px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .shopping-list-container {
+        display: flex;
+        gap: 40px;
+    }
+
+    .shopping-list-content {
+       flex-grow: 1;
+    }
+
+}
+
+.charity-hidden {
+    display: none;
+}
