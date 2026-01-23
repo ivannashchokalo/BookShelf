@@ -8,10 +8,28 @@ export function saveToLS(key, value) {
 
 export function loadFromLS(key) {
     try {
-         const data = localStorage.getItem(key);
-        return data?  JSON.parse(data):null;
+        const data = localStorage.getItem(key);
+        return data ? JSON.parse(data) : null;
     } catch (error) {
         console.error('Error loading from LocalStorage:', error);
         return null;
     }
+}
+
+const USER_KEY = 'user';
+
+export function getUser() {
+    try {
+        return JSON.parse(localStorage.getItem(USER_KEY));
+    } catch {
+        return null;
+    }
+}
+
+export function setUser(user) {
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
+}
+
+export function clearUser() {
+    localStorage.removeItem(USER_KEY);
 }

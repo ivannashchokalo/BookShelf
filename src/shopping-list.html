@@ -1,235 +1,55 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shopping list</title>
-  </head>
-  <body data-page="shopping-list">
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
-    <a href="./index.html">HOME</a>
-    <main>
-      <section class="shopping-list">
-        <div class="container shopping-list-container">
-          <load src="./partials/support.html" />
-          <div class="shopping-list-content">
-            <div class="shopping-list-books">
-              <h1 class="main-title main-title-shoppin-list">
-                Shopping<span>List</span>
-              </h1>
-              <ul id="books-list" class="books-list">
-                <li class="shop-list-item" id="${_id}">
-                  <img
-                    class="shop-list-img"
-                    src="./img/shopping-list/Rectangle 13.png"
-                    alt="${title}"
-                    width="116"
-                    height="165"
-                  />
-                  <div class="book-info">
-                    <h1 class="book-card-title">I will find you</h1>
-                    <p class="book-category">Hardcover fiction</p>
-                    <p class="book-description">
-                      David Burroughs was once a devoted father to his
-                      three-year-old son Matthew, living a dream life just a
-                      short drive away from the working-class suburb where he
-                      and his wife, Cheryl, first fell in love--until one
-                      fateful night when David woke suddenly to discover Matthew
-                      had been murdered while David was asleep just down the
-                      hall.
-                    </p>
-                    <p class="book-card-author">Harlan Coben</p>
-                  </div>
-                  <!-- <ul class="book-shop-links">
-                    <li>
-                      <a href="${amazon_product_url}" target="_blank"
-                        ><svg class="book-shop-img amazon-logo">
-                          <use href="${icon}#icon-amazon"></use></svg
-                        >AMAZONE</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="book-shop-link"
-                        href="${buy_links[1].url}"
-                        target="_blank"
-                        ><svg class="book-shop-img apple-books-logo">
-                          <use href="${icon}#icon-ibooks"></use></svg
-                        >BOOK</a
-                      >
-                    </li>
-                  </ul> -->
-                  <button
-                    class="shop-list-delete-btn"
-                    data-id="${_id}"
-                    aria-label="Remove book"
-                  >
-                    <svg class="delete-btn-icon">
-                      <use href="${trash}#icon-trash"></use>
-                    </svg>
-                  </button>
-                </li>
-                <li class="shop-list-item" id="${_id}">
-                  <img
-                    class="shop-list-img"
-                    src="./img/shopping-list/Rectangle 13.png"
-                    alt="${title}"
-                    width="116"
-                    height="165"
-                  />
-                  <div class="book-info">
-                    <h1 class="book-card-title">I will find you</h1>
-                    <p class="book-category">Hardcover fiction</p>
-                    <p class="book-description">
-                      David Burroughs was once a devoted father to his
-                      three-year-old son Matthew, living a dream life just a
-                      short drive away from the working-class suburb where he
-                      and his wife, Cheryl, first fell in love--until one
-                      fateful night when David woke suddenly to discover Matthew
-                      had been murdered while David was asleep just down the
-                      hall.
-                    </p>
-                    <p class="book-card-author">Harlan Coben</p>
-                  </div>
-                  <!-- <ul class="book-shop-links">
-                    <li>
-                      <a href="${amazon_product_url}" target="_blank"
-                        ><svg class="book-shop-img amazon-logo">
-                          <use href="${icon}#icon-amazon"></use></svg
-                        >AMAZONE</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="book-shop-link"
-                        href="${buy_links[1].url}"
-                        target="_blank"
-                        ><svg class="book-shop-img apple-books-logo">
-                          <use href="${icon}#icon-ibooks"></use></svg
-                        >BOOK</a
-                      >
-                    </li>
-                  </ul> -->
-                  <button
-                    class="shop-list-delete-btn"
-                    data-id="${_id}"
-                    aria-label="Remove book"
-                  >
-                    <svg class="delete-btn-icon">
-                      <use href="${trash}#icon-trash"></use>
-                    </svg>
-                  </button>
-                </li>
-                <li class="shop-list-item" id="${_id}">
-                  <img
-                    class="shop-list-img"
-                    src="./img/shopping-list/Rectangle 13.png"
-                    alt="${title}"
-                    width="116"
-                    height="165"
-                  />
-                  <div class="book-info">
-                    <h1 class="book-card-title">I will find you</h1>
-                    <p class="book-category">Hardcover fiction</p>
-                    <p class="book-description">
-                      David Burroughs was once a devoted father to his
-                      three-year-old son Matthew, living a dream life just a
-                      short drive away from the working-class suburb where he
-                      and his wife, Cheryl, first fell in love--until one
-                      fateful night when David woke suddenly to discover Matthew
-                      had been murdered while David was asleep just down the
-                      hall.
-                    </p>
-                    <p class="book-card-author">Harlan Coben</p>
-                  </div>
-                  <!-- <ul class="book-shop-links">
-                    <li>
-                      <a href="${amazon_product_url}" target="_blank"
-                        ><svg class="book-shop-img amazon-logo">
-                          <use href="${icon}#icon-amazon"></use></svg
-                        >AMAZONE</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="book-shop-link"
-                        href="${buy_links[1].url}"
-                        target="_blank"
-                        ><svg class="book-shop-img apple-books-logo">
-                          <use href="${icon}#icon-ibooks"></use></svg
-                        >BOOK</a
-                      >
-                    </li>
-                  </ul> -->
-                  <button
-                    class="shop-list-delete-btn"
-                    data-id="${_id}"
-                    aria-label="Remove book"
-                  >
-                    <svg class="delete-btn-icon">
-                      <use href="${trash}#icon-trash"></use>
-                    </svg>
-                  </button>
-                </li>
-                <li class="shop-list-item" id="${_id}">
-                  <img
-                    class="shop-list-img"
-                    src="./img/shopping-list/Rectangle 13.png"
-                    alt="${title}"
-                    width="116"
-                    height="165"
-                  />
-                  <div class="book-info">
-                    <h1 class="book-card-title">I will find you</h1>
-                    <p class="book-category">Hardcover fiction</p>
-                    <p class="book-description">
-                      David Burroughs was once a devoted father to his
-                      three-year-old son Matthew, living a dream life just a
-                      short drive away from the working-class suburb where he
-                      and his wife, Cheryl, first fell in love--until one
-                      fateful night when David woke suddenly to discover Matthew
-                      had been murdered while David was asleep just down the
-                      hall.
-                    </p>
-                    <p class="book-card-author">Harlan Coben</p>
-                  </div>
-                  <!-- <ul class="book-shop-links">
-                    <li>
-                      <a href="${amazon_product_url}" target="_blank"
-                        ><svg class="book-shop-img amazon-logo">
-                          <use href="${icon}#icon-amazon"></use></svg
-                        >AMAZONE</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="book-shop-link"
-                        href="${buy_links[1].url}"
-                        target="_blank"
-                        ><svg class="book-shop-img apple-books-logo">
-                          <use href="${icon}#icon-ibooks"></use></svg
-                        >BOOK</a
-                      >
-                    </li>
-                  </ul> -->
-                  <button
-                    class="shop-list-delete-btn"
-                    data-id="${_id}"
-                    aria-label="Remove book"
-                  >
-                    <svg class="delete-btn-icon">
-                      <use href="${trash}#icon-trash"></use>
-                    </svg>
-                  </button>
-                </li>
-              </ul>
-              <load src="./partials/list-empty.html" />
-            </div>
-          </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping list</title>
+</head>
+
+<body data-page="shopping-list">
+  <load src="./partials/header.html" />
+  <load src="./partials/auth-modal.html" />
+  <load src="./partials/mobile-menu.html" />
+
+  <main>
+    <section class="shopping-list">
+      <div class="container shopping-list-container">
+        <load src="./partials/support.html" />
+        <div class="shopping-list-books">
+          <h1 class="main-title">Shopping<span>List</span></h1>
         </div>
-      </section>
-    </main>
-    <script type="module" src="./main.js"></script>
-  </body>
+        <div class="shop-list-empty is-hidden">
+          <p class="shop-list-empty-message">
+            This page is empty, add some books and proceed to order.
+          </p>
+          <picture class="shop-list-empty-img">
+            <source media="(min-width: 768px)" srcset="
+                              ./img/shopping-list/empty-basket_desktop_tab@1x.avif 1x,
+                              ./img/shopping-list/empty-basket_desktop_tab@2x.avif 2x
+                            " type="image/avif" />
+            <source media="(min-width: 768px)" srcset="
+                              ./img/shopping-list/empty-basket_desktop_tab@1x.png 1x,
+                              ./img/shopping-list/empty-basket_desktop_tab@2x.png 2x
+                            " type="image/png" />
+            <source media="(max-width: 767px)" srcset="
+                              ./img/shopping-list/empty-basket_mob@1x.avif 1x,
+                              ./img/shopping-list/empty-basket_mob@2x.avif 2x
+                            " type="image/avif" />
+            <source media="(max-width: 767px)" srcset="
+                              ./img/shopping-list/empty-basket_mob@1x.png 1x,
+                              ./img/shopping-list/empty-basket_mob@2x.png 2x
+                            " type="image/png" />
+            <img class="shop-list-empty-img" src="./img/shopping-list/empty-basket_mob@1x.png" alt="Books image"
+              width="265" height="198" />
+          </picture>
+        </div>
+        <div id="pagination" class="tui-pagination"></div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+
 </html>
