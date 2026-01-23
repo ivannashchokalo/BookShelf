@@ -1,0 +1,31 @@
+<div class="auth-backdrop hidden" id="auth-backdrop">
+    <div class="auth-modal">
+        <button class="auth-close" id="auth-close" aria-label="Close auth modal">
+            <svg class="auth-close-svg">
+                <use href="../icons/symbol-defs.svg#icon-x-close"></use>
+            </svg>
+        </button>
+
+        <form id="auth-form">
+            <div class="auth-input">
+                <input type="text" id="auth-name" placeholder="Name" required />
+            </div>
+
+            <div class="auth-input">
+                <input type="email" id="auth-email" placeholder="Email" required />
+                <svg class="auth-input-icon">
+                    <use href="../icons/symbol-defs.svg#icon-mail"></use>
+                </svg>
+            </div>
+
+            <div class="auth-input">
+                <input type="password" id="auth-password" placeholder="Password" required />
+                <svg class="auth-input-icon">
+                    <use href="../icons/symbol-defs.svg#icon-lock"></use>
+                </svg>
+            </div>
+
+            <button type="submit" class="auth-submit">Sign up</button>
+        </form>
+    </div>
+</div>
