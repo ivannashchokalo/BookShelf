@@ -1,18 +1,21 @@
+
 export function setActiveLinks() {
-    let currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPath = window.location.pathname;
 
     const links = document.querySelectorAll(
         '.menu-home, .menu-shopping-list, .mob-menu-link, .mob-menu-list-link'
     );
 
     links.forEach(link => {
-        if (!link) return;
+        link.classList.remove('is-active');
 
-        let href = link.getAttribute('href');
-        if (!href) return;
+        const linkPath = new URL(link.href).pathname;
 
-        href = href.split('/').pop().split('?')[0].split('#')[0];
-
-        link.classList.toggle('active', href === currentPage);
+        if (
+            (linkPath === '/index.html' && (currentPath === '/' || currentPath === '/index.html')) ||
+            linkPath === currentPath
+        ) {
+            link.classList.add("active");
+        }
     });
 }

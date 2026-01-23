@@ -71,6 +71,18 @@ export function initHeader() {
         });
     }
 
+    document.addEventListener('click', (e) => {
+        if (mobileMenu?.isOpen && mobileMenu?.menuEl && !mobileMenu.menuEl.contains(e.target)) {
+            mobileMenu.closeMenu();
+        }
+    });
+
+        document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu?.isOpen) {
+            mobileMenu.closeMenu();
+        }
+    });
+
     window.addEventListener('resize', () => {
         updateHeader();
         setActiveLinks();

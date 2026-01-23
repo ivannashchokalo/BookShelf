@@ -8,6 +8,11 @@
     display: none !important;
 }
 
+.active {
+    border-radius: 36px;
+    background-color: var(--yellow);
+}
+
 /* ================= HEADER (COMMON) ================= */
 
 .header {
@@ -164,11 +169,8 @@
     position: fixed;
     inset: 0;
     z-index: 1000;
-    // display: flex;
     background: var(--support-gradient);
     transform: translateX(100%);
-    // opacity: 0;
-    // pointer-events: none;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
@@ -181,8 +183,6 @@
 
 .mobile-menu {
     display: flex;
-    // justify-content: center;
-    // margin-top: 247px;
 }
 
 .mob-menu-list {
@@ -199,6 +199,7 @@
     font-weight: 600;
     font-size: 16px;
     color: var(--card-bg-color);
+    padding: 8px 16px;
 }
 
 .mob-menu-list-link {
@@ -258,7 +259,7 @@
     font-size: 14px;
     letter-spacing: -0.04em;
     color: var(--black);
-    margin-top: 327px;
+    margin-top: 307px;
     margin-left: 20px;
     z-index: 10;
 }
@@ -384,11 +385,6 @@
 
     .icon-shop {
         fill: var(--black);
-    }
-
-    .active {
-        border-radius: 36px;
-        background-color: var(--yellow);
     }
 
     .header-logo {
