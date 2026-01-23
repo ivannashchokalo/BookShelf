@@ -6,16 +6,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book shelf</title>
     <script type="module" crossorigin src="/BookShelf/assets/vendor-D9UGMLfO.js"></script>
-    <script type="module" crossorigin src="/BookShelf/assets/main-fDWLdXrX.js"></script>
-    <link rel="stylesheet" crossorigin href="/BookShelf/assets/main-3zFqBSJI.css">
+    <script type="module" crossorigin src="/BookShelf/assets/main-asyoNA6L.js"></script>
+    <link rel="stylesheet" crossorigin href="/BookShelf/assets/main-WY7v5ypr.css">
     <link rel="stylesheet" crossorigin href="/BookShelf/assets/vendor-C6_ZQafJ.css">
   </head>
   <body data-page="home">
     <header class="header">
-  <div class="container"></div>
-</header>
+  <div class="container container-header">
+    <nav class="header-nav">
 
-    <a href="./shopping-list.html">Shopping list</a>
+      <a class="header-logo" href="/index.html">
+        <svg class="header-logo-svg" width="24" height="24">
+          <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-logo"></use>
+        </svg>
+        Bookshelf
+      </a>
+
+      <div class="desktop-nav hidden" id="desktop-nav">
+        <ul class="menu-ul">
+          <li class="menu-li-home">
+            <a href="/index.html" class="menu-home">Home</a>
+          </li>
+          <li class="menu-li-shop">
+            <a href="/shopping-list.html" class="menu-shopping-list">
+              Shopping List
+              <svg class="icon-shop" width="20" height="20">
+                <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-uil-cart"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="toggle" aria-label="Theme switch"></div>
+
+      <button class="header-btn" id="header-sign-up-btn">
+        Sign up
+        <svg class="btn-arrow" width="22" height="22">
+          <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-arrow-right"></use>
+        </svg>
+      </button>
+
+      <button type="button" class="user-btn hidden" id="header-user-btn">
+        <span class="user-avatar">
+          <svg class="user-avatar-default" width="13" height="17">
+            <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-user"></use>
+          </svg>
+        </span>
+        <span class="user-name" id="header-user-name"></span>
+        <svg class="user-arrow" width="23" height="26">
+          <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-down-arrow"></use>
+        </svg>
+      </button>
+
+      <button type="button" class="header-menu" id="menu-open-btn">
+        <svg class="header-menu-svg" width="28" height="28">
+          <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-burger-menu"></use>
+        </svg>
+      </button>
+
+      <button type="button" class="header-menu-close disabled" id="menu-close-btn">
+        <svg class="header-menu-close-svg" width="22" height="22">
+          <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-x-close"></use>
+        </svg>
+      </button>
+
+    </nav>
+  </div>
+</header>
+    <div class="auth-backdrop hidden" id="auth-backdrop">
+    <div class="auth-modal">
+        <button class="auth-close" id="auth-close" aria-label="Close auth modal">
+            <svg class="auth-close-svg">
+                <use href="../icons/symbol-defs.svg#icon-x-close"></use>
+            </svg>
+        </button>
+
+        <form id="auth-form">
+            <div class="auth-input">
+                <input type="text" id="auth-name" placeholder="Name" required />
+            </div>
+
+            <div class="auth-input">
+                <input type="email" id="auth-email" placeholder="Email" required />
+                <svg class="auth-input-icon">
+                    <use href="../icons/symbol-defs.svg#icon-mail"></use>
+                </svg>
+            </div>
+
+            <div class="auth-input">
+                <input type="password" id="auth-password" placeholder="Password" required />
+                <svg class="auth-input-icon">
+                    <use href="../icons/symbol-defs.svg#icon-lock"></use>
+                </svg>
+            </div>
+
+            <button type="submit" class="auth-submit">Sign up</button>
+        </form>
+    </div>
+</div>
+    <div class="mobile" id="mobile-menu">
+    <div class="mobile-menu">
+
+        <button type="button" class="user-btn user-btn-mobile hidden" id="mob-user-btn">
+            <span class="user-avatar">
+                <svg class="user-avatar-default" width="13" height="17">
+                    <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-user"></use>
+                </svg>
+            </span>
+            <span class="user-name" id="mob-user-name"></span>
+        </button>
+
+        <ul class="mob-menu-list">
+            <li>
+                <a class="mob-menu-link" href="/index.html">Home</a>
+            </li>
+            <li>
+                <a class="mob-menu-list-link" href="/shopping-list.html">
+                    Shopping List
+                    <svg class="list-svg" width="20" height="20">
+                        <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-uil-cart"></use>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mobile-bottom">
+
+        <button class="sing-mob-bth" id="mob-login-btn">
+            Sign up
+            <svg class="btn-arrow" width="22" height="22">
+                <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-arrow-right"></use>
+            </svg>
+        </button>
+
+        <button class="long-bth hidden" id="mob-logout-btn">
+            Log out
+            <svg class="btn-arrow" width="22" height="22">
+                <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-arrow-right"></use>
+            </svg>
+        </button>
+
+        <div class="image">
+            <img class="mob-books-img" src="/BookShelf/assets/mob-menu-1x-min-BpzOGbhO.png" srcset="/BookShelf/assets/mob-menu-1x-min-BpzOGbhO.png 1x, /BookShelf/assets/mob-menu-2x-min-NINDipEn.png 2x" alt="Books illustration" />
+        </div>
+
+    </div>
+</div>
+
     <main>
       <section class="main-section">
         <div class="container main-section-container">
