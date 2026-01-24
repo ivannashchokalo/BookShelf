@@ -1,5 +1,6 @@
 import { fetchAllCategories, fetchBookByCategory } from '../utils/books-api';
 import { refs, STATE } from '../utils/constants';
+import { hideEmptyPage, showEmptyPage } from '../utils/helpers';
 import { hideLoader, showLoader } from '../utils/loader';
 import { notyf } from '../utils/notifications';
 import { getTopBooks, renderBooksListByCategory } from './main-book-list';
@@ -8,8 +9,7 @@ export async function initCategoryList() {
   try {
     const categories = await fetchAllCategories();
     renderCategories(categories);
-  } catch (error) {
-    console.log(error);
+  } catch {
     notyf.error('An error occurred while loading');
   }
   refs.categoriesList.addEventListener('click', handleCategoryClick);
@@ -43,13 +43,24 @@ async function handleCategoryClick(e) {
   showLoader();
 
   try {
+    let data = [];
+
     if (categoryName === 'All categories') {
       refs.mainBookList.dataset.booklist = 'top-books';
-      await getTopBooks();
+      data = await getTopBooks();
     } else {
       refs.mainBookList.dataset.booklist = 'books-by-category';
       const category = await fetchBookByCategory(categoryName);
-      renderBooksListByCategory(category);
+      if (category && category.length > 0) {
+        renderBooksListByCategory(category);
+        data = category;
+      }
+    }
+
+    if (!data || data.length === 0) {
+      showEmptyPage();
+    } else {
+      hideEmptyPage();
     }
 
     if (STATE.screenType === 'mobile' || STATE.screenType === 'tablet') {
@@ -61,6 +72,7 @@ async function handleCategoryClick(e) {
   } catch (error) {
     console.log(error);
     notyf.error('An error occurred while loading');
+    showEmptyPage();
   } finally {
     hideLoader();
   }

@@ -9,6 +9,7 @@
     }
 }
 
+
 @media screen and (min-width: 768px) {
     .main-title {
       @include m.font($fs: 48px, $fw: 700, $lh: 52px);  

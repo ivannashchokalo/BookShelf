@@ -1,6 +1,11 @@
 import { fetchTopBooks } from '../utils/books-api';
 import { refs, STATE } from '../utils/constants';
-import { getResponsiveCardsLimit, getScreenType } from '../utils/helpers';
+import {
+  getResponsiveCardsLimit,
+  getScreenType,
+  hideEmptyPage,
+  showEmptyPage,
+} from '../utils/helpers';
 import { hideLoader, showLoader } from '../utils/loader';
 import { notyf } from '../utils/notifications';
 
@@ -8,20 +13,26 @@ export async function initBookList() {
   // зчитати і застосувати тему з локального сховища
   // за бажанням можна додати каунтер в хедер до шопінг листа. Зчитати і застосувати його з локального сховища
   STATE.screenType = getScreenType();
+  showEmptyPage();
   await getTopBooks();
 }
 
 export async function getTopBooks() {
   const cardsLimit = getResponsiveCardsLimit();
-  showLoader()
+  showLoader();
   try {
     const data = await fetchTopBooks();
-    renderTopBooks(data, cardsLimit);
-  } catch (err) {
-    console.log(err);
+
+    if (data && data.length > 0) {
+      hideEmptyPage();
+      renderTopBooks(data, cardsLimit);
+    }
+    return data;
+  } catch {
     notyf.error('An error occurred while loading');
+    showEmptyPage();
   } finally {
-    hideLoader()
+    hideLoader();
   }
 }
 
