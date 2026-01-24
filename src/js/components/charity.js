@@ -137,3 +137,5 @@ function fundsMarkup(funds) {
     })
     .join('');
 }
+
+//комент

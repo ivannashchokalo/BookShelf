@@ -66,3 +66,5 @@ export function showEmptyPage() {
 export function hideEmptyPage() {
   refs.emptyList.classList.add('empty-list-hidden');
 }
+
+//комент
