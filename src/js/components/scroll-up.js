@@ -24,3 +24,4 @@ export function scrollUp() {
     behavior: 'smooth',
   });
 }
+//комент

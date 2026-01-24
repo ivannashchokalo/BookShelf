@@ -7,9 +7,11 @@ import { handleShoppingListResize, showEmptyPage } from '../utils/helpers';
 export function initShoppingList() {
   renderShoppingList();
   initShoppingListRemove();
-  showEmptyPage(); // це тут тимчасово
+  showEmptyPage(); // це тут тимчасовоj
 
   // приховання charity
   handleShoppingListResize();
   window.addEventListener('resize', handleShoppingListResize);
 }
+
+//комент

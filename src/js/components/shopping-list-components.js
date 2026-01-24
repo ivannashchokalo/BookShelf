@@ -105,3 +105,5 @@ export function initShoppingListRemove() {
     await renderShoppingList();
   });
 }
+
+//комент
