@@ -15,4 +15,4 @@ export function loadFromLS(key) {
     return null;
   }
 }
-//комент
+//коментn
