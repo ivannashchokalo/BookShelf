@@ -15,30 +15,21 @@ export function loadFromLS(key) {
     return null;
   }
 }
-//комент
-    try {
-        const data = localStorage.getItem(key);
-        return data ? JSON.parse(data) : null;
-    } catch (error) {
-        console.error('Error loading from LocalStorage:', error);
-        return null;
-    }
-}
 
 const USER_KEY = 'user';
 
 export function getUser() {
-    try {
-        return JSON.parse(localStorage.getItem(USER_KEY));
-    } catch {
-        return null;
-    }
+  try {
+    return JSON.parse(localStorage.getItem(USER_KEY));
+  } catch {
+    return null;
+  }
 }
 
 export function setUser(user) {
-    localStorage.setItem(USER_KEY, JSON.stringify(user));
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
 }
 
 export function clearUser() {
-    localStorage.removeItem(USER_KEY);
+  localStorage.removeItem(USER_KEY);
 }
