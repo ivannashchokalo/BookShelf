@@ -1,19 +1,17 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/BookShelf/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shopping list</title>
-  <script type="module" crossorigin src="/BookShelf/assets/vendor-D9UGMLfO.js"></script>
-  <script type="module" crossorigin src="/BookShelf/assets/main-asyoNA6L.js"></script>
-  <link rel="stylesheet" crossorigin href="/BookShelf/assets/vendor-C6_ZQafJ.css">
-  <link rel="stylesheet" crossorigin href="/BookShelf/assets/main-WY7v5ypr.css">
-</head>
-
-<body data-page="shopping-list">
-  <header class="header">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/BookShelf/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping list</title>
+    <script type="module" crossorigin src="/BookShelf/assets/vendor-D9UGMLfO.js"></script>
+    <script type="module" crossorigin src="/BookShelf/assets/main-asyoNA6L.js"></script>
+    <link rel="stylesheet" crossorigin href="/BookShelf/assets/main-WY7v5ypr.css">
+    <link rel="stylesheet" crossorigin href="/BookShelf/assets/vendor-C6_ZQafJ.css">
+  </head>
+  <body data-page="shopping-list">
+    <header class="header">
   <div class="container container-header">
     <nav class="header-nav">
 
@@ -76,92 +74,11 @@
     </nav>
   </div>
 </header>
-  <div class="auth-backdrop hidden" id="auth-backdrop">
-    <div class="auth-modal">
-        <button class="auth-close" id="auth-close" aria-label="Close auth modal">
-            <svg class="auth-close-svg">
-                <use href="../icons/symbol-defs.svg#icon-x-close"></use>
-            </svg>
-        </button>
-
-        <form id="auth-form">
-            <div class="auth-input">
-                <input type="text" id="auth-name" placeholder="Name" required />
-            </div>
-
-            <div class="auth-input">
-                <input type="email" id="auth-email" placeholder="Email" required />
-                <svg class="auth-input-icon">
-                    <use href="../icons/symbol-defs.svg#icon-mail"></use>
-                </svg>
-            </div>
-
-            <div class="auth-input">
-                <input type="password" id="auth-password" placeholder="Password" required />
-                <svg class="auth-input-icon">
-                    <use href="../icons/symbol-defs.svg#icon-lock"></use>
-                </svg>
-            </div>
-
-            <button type="submit" class="auth-submit">Sign up</button>
-        </form>
-    </div>
-</div>
-  <div class="mobile" id="mobile-menu">
-    <div class="mobile-menu">
-
-        <button type="button" class="user-btn user-btn-mobile hidden" id="mob-user-btn">
-            <span class="user-avatar">
-                <svg class="user-avatar-default" width="13" height="17">
-                    <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-user"></use>
-                </svg>
-            </span>
-            <span class="user-name" id="mob-user-name"></span>
-        </button>
-
-        <ul class="mob-menu-list">
-            <li>
-                <a class="mob-menu-link" href="/index.html">Home</a>
-            </li>
-            <li>
-                <a class="mob-menu-list-link" href="/shopping-list.html">
-                    Shopping List
-                    <svg class="list-svg" width="20" height="20">
-                        <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-uil-cart"></use>
-                    </svg>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="mobile-bottom">
-
-        <button class="sing-mob-bth" id="mob-login-btn">
-            Sign up
-            <svg class="btn-arrow" width="22" height="22">
-                <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-arrow-right"></use>
-            </svg>
-        </button>
-
-        <button class="long-bth hidden" id="mob-logout-btn">
-            Log out
-            <svg class="btn-arrow" width="22" height="22">
-                <use href="/BookShelf/assets/symbol-defs-1qghD2SQ.svg#icon-arrow-right"></use>
-            </svg>
-        </button>
-
-        <div class="image">
-            <img class="mob-books-img" src="/BookShelf/assets/mob-menu-1x-min-BpzOGbhO.png" srcset="/BookShelf/assets/mob-menu-1x-min-BpzOGbhO.png 1x, /BookShelf/assets/mob-menu-2x-min-NINDipEn.png 2x" alt="Books illustration" />
-        </div>
-
-    </div>
-</div>
-
-
-  <main>
-    <section class="shopping-list">
-      <div class="container shopping-list-container">
-        <div class="support-wrapper">
+    <a href="./index.html">HOMEe</a>
+    <main>
+      <section class="shopping-list">
+        <div class="container shopping-list-container">
+          <div class="support-wrapper">
   <div class="support-title">
     <span class="support-paragraph">Support Ukraine</span>
     <svg class="ukraine-emblem" width="20" height="32">
@@ -185,8 +102,249 @@
 </div>
 
 
-        <div class="shopping-list-books">
-          <h1 class="main-title">Shopping<span>List</span></h1>
+          <div class="shopping-list-content">
+            <div class="shopping-list-books">
+              <h1 class="main-title main-title-shoppin-list">
+                Shopping<span>List</span>
+              </h1>
+              <ul id="books-list" class="books-list">
+                <li class="shop-list-item" id="${_id}">
+                  <img
+                    class="shop-list-img"
+                    src="/BookShelf/assets/Rectangle%2013-ChZU3dk5.png"
+                    alt="${title}"
+                    width="116"
+                    height="165"
+                  />
+                  <div class="book-info">
+                    <h1 class="book-card-title">I will find you</h1>
+                    <p class="book-category">Hardcover fiction</p>
+                    <p class="book-description">
+                      David Burroughs was once a devoted father to his
+                      three-year-old son Matthew, living a dream life just a
+                      short drive away from the working-class suburb where he
+                      and his wife, Cheryl, first fell in love--until one
+                      fateful night when David woke suddenly to discover Matthew
+                      had been murdered while David was asleep just down the
+                      hall.
+                    </p>
+                    <p class="book-card-author">Harlan Coben</p>
+                  </div>
+                  <!-- <ul class="book-shop-links">
+                    <li>
+                      <a href="${amazon_product_url}" target="_blank"
+                        ><svg class="book-shop-img amazon-logo">
+                          <use href="${icon}#icon-amazon"></use></svg
+                        >AMAZONE</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="book-shop-link"
+                        href="${buy_links[1].url}"
+                        target="_blank"
+                        ><svg class="book-shop-img apple-books-logo">
+                          <use href="${icon}#icon-ibooks"></use></svg
+                        >BOOK</a
+                      >
+                    </li>
+                  </ul> -->
+                  <button
+                    class="shop-list-delete-btn"
+                    data-id="${_id}"
+                    aria-label="Remove book"
+                  >
+                    <svg class="delete-btn-icon">
+                      <use href="${trash}#icon-trash"></use>
+                    </svg>
+                  </button>
+                </li>
+                <li class="shop-list-item" id="${_id}">
+                  <img
+                    class="shop-list-img"
+                    src="/BookShelf/assets/Rectangle%2013-ChZU3dk5.png"
+                    alt="${title}"
+                    width="116"
+                    height="165"
+                  />
+                  <div class="book-info">
+                    <h1 class="book-card-title">I will find you</h1>
+                    <p class="book-category">Hardcover fiction</p>
+                    <p class="book-description">
+                      David Burroughs was once a devoted father to his
+                      three-year-old son Matthew, living a dream life just a
+                      short drive away from the working-class suburb where he
+                      and his wife, Cheryl, first fell in love--until one
+                      fateful night when David woke suddenly to discover Matthew
+                      had been murdered while David was asleep just down the
+                      hall.
+                    </p>
+                    <p class="book-card-author">Harlan Coben</p>
+                  </div>
+                  <!-- <ul class="book-shop-links">
+                    <li>
+                      <a href="${amazon_product_url}" target="_blank"
+                        ><svg class="book-shop-img amazon-logo">
+                          <use href="${icon}#icon-amazon"></use></svg
+                        >AMAZONE</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="book-shop-link"
+                        href="${buy_links[1].url}"
+                        target="_blank"
+                        ><svg class="book-shop-img apple-books-logo">
+                          <use href="${icon}#icon-ibooks"></use></svg
+                        >BOOK</a
+                      >
+                    </li>
+                  </ul> -->
+                  <button
+                    class="shop-list-delete-btn"
+                    data-id="${_id}"
+                    aria-label="Remove book"
+                  >
+                    <svg class="delete-btn-icon">
+                      <use href="${trash}#icon-trash"></use>
+                    </svg>
+                  </button>
+                </li>
+                <li class="shop-list-item" id="${_id}">
+                  <img
+                    class="shop-list-img"
+                    src="/BookShelf/assets/Rectangle%2013-ChZU3dk5.png"
+                    alt="${title}"
+                    width="116"
+                    height="165"
+                  />
+                  <div class="book-info">
+                    <h1 class="book-card-title">I will find you</h1>
+                    <p class="book-category">Hardcover fiction</p>
+                    <p class="book-description">
+                      David Burroughs was once a devoted father to his
+                      three-year-old son Matthew, living a dream life just a
+                      short drive away from the working-class suburb where he
+                      and his wife, Cheryl, first fell in love--until one
+                      fateful night when David woke suddenly to discover Matthew
+                      had been murdered while David was asleep just down the
+                      hall.
+                    </p>
+                    <p class="book-card-author">Harlan Coben</p>
+                  </div>
+                  <!-- <ul class="book-shop-links">
+                    <li>
+                      <a href="${amazon_product_url}" target="_blank"
+                        ><svg class="book-shop-img amazon-logo">
+                          <use href="${icon}#icon-amazon"></use></svg
+                        >AMAZONE</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="book-shop-link"
+                        href="${buy_links[1].url}"
+                        target="_blank"
+                        ><svg class="book-shop-img apple-books-logo">
+                          <use href="${icon}#icon-ibooks"></use></svg
+                        >BOOK</a
+                      >
+                    </li>
+                  </ul> -->
+                  <button
+                    class="shop-list-delete-btn"
+                    data-id="${_id}"
+                    aria-label="Remove book"
+                  >
+                    <svg class="delete-btn-icon">
+                      <use href="${trash}#icon-trash"></use>
+                    </svg>
+                  </button>
+                </li>
+                <li class="shop-list-item" id="${_id}">
+                  <img
+                    class="shop-list-img"
+                    src="/BookShelf/assets/Rectangle%2013-ChZU3dk5.png"
+                    alt="${title}"
+                    width="116"
+                    height="165"
+                  />
+                  <div class="book-info">
+                    <h1 class="book-card-title">I will find you</h1>
+                    <p class="book-category">Hardcover fiction</p>
+                    <p class="book-description">
+                      David Burroughs was once a devoted father to his
+                      three-year-old son Matthew, living a dream life just a
+                      short drive away from the working-class suburb where he
+                      and his wife, Cheryl, first fell in love--until one
+                      fateful night when David woke suddenly to discover Matthew
+                      had been murdered while David was asleep just down the
+                      hall.
+                    </p>
+                    <p class="book-card-author">Harlan Coben</p>
+                  </div>
+                  <!-- <ul class="book-shop-links">
+                    <li>
+                      <a href="${amazon_product_url}" target="_blank"
+                        ><svg class="book-shop-img amazon-logo">
+                          <use href="${icon}#icon-amazon"></use></svg
+                        >AMAZONE</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="book-shop-link"
+                        href="${buy_links[1].url}"
+                        target="_blank"
+                        ><svg class="book-shop-img apple-books-logo">
+                          <use href="${icon}#icon-ibooks"></use></svg
+                        >BOOK</a
+                      >
+                    </li>
+                  </ul> -->
+                  <button
+                    class="shop-list-delete-btn"
+                    data-id="${_id}"
+                    aria-label="Remove book"
+                  >
+                    <svg class="delete-btn-icon">
+                      <use href="${trash}#icon-trash"></use>
+                    </svg>
+                  </button>
+                </li>
+              </ul>
+              <div class="list-empty">
+  <p class="list-empty-message list-empty-message-shopping">
+    This page is empty, add some books and proceed to order.
+  </p>
+  <p class="list-empty-message list-empty-message-home">
+    This page is empty. There aren't any books.
+  </p>
+  <picture class="list-empty-img">
+    <source
+      srcset="/BookShelf/assets/books-des-tablet-H5_jeGOx.webp 1x, /BookShelf/assets/books-des-tablet@2x-B2ygGSUH.webp 2x"
+      media="(min-width: 1440px)"
+    />
+    <source
+      srcset="/BookShelf/assets/books-des-tablet-H5_jeGOx.webp 1x, /BookShelf/assets/books-des-tablet@2x-B2ygGSUH.webp 2x"
+      media="(min-width: 768px)"
+    />
+    <source
+      srcset="/BookShelf/assets/books-mobile-D6qNfdS1.webp 1x, /BookShelf/assets/books-mobile@2x-BpsMpCrJ.webp 2x"
+      media="(max-width: 767px)"
+    />
+    <img
+      class="list-empty-img"
+      src="/BookShelf/assets/books-des-tablet-H5_jeGOx.webp"
+      alt="Books image"
+      width="265"
+      height="198"
+    />
+  </picture>
+</div>
+
+            </div>
+          </div>
         </div>
         <div class="shop-list-empty is-hidden">
           <p class="shop-list-empty-message">
