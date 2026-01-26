@@ -10,8 +10,6 @@ import { hideLoader, showLoader } from '../utils/loader';
 import { notyf } from '../utils/notifications';
 
 export async function initBookList() {
-  // зчитати і застосувати тему з локального сховища
-  // за бажанням можна додати каунтер в хедер до шопінг листа. Зчитати і застосувати його з локального сховища
   STATE.screenType = getScreenType();
   showEmptyPage();
   await getTopBooks();

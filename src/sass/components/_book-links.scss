@@ -1,0 +1,14 @@
+.book-link {
+  display: inline-block;
+
+  &-logo {
+    display: block;
+    filter: grayscale(100%) brightness(1.2) contrast(0.8);
+    transition: filter 0.2s ease; // дописати нормальний транзішин. Де він в проєкті?
+  }
+
+  &:hover &-logo,
+  &:focus-visible &-logo {
+    filter: none;
+  }
+}

@@ -1,8 +1,8 @@
 import { refs, WISHLIST_KEY } from '../utils/constants';
 import { loadFromLS, saveToLS } from '../utils/storage';
 import { fetchBookById } from '../utils/books-api';
-import icon from '../../icons/symbol-defs.svg';
 import trash from '../../icons/symbol-defs.svg?url';
+import { renderBookLinks } from './book-links';
 
 export function getWishlist() {
   return loadFromLS(WISHLIST_KEY) || [];
@@ -40,9 +40,11 @@ function bookCardTemplate(book) {
     list_name,
     description,
     author,
-    amazon_product_url,
+    //amazon_product_url,
     buy_links,
   } = book;
+
+  const linksMarkup = renderBookLinks(buy_links);
 
   return `<li class="shop-list-item" id="${_id}">
         <img class="shop-list-img"
@@ -54,10 +56,7 @@ function bookCardTemplate(book) {
         <p class="book-description">${description}</p>
         <div class="card-footer">
         <p class="book-author">${author}</p>
-        <ul class="book-shop-links">
-        <li><a href="${amazon_product_url}" target="_blank"><svg class="book-shop-img amazon-logo"><use href="${icon}#icon-amazon"></use></svg></a></li>
-        <li><a class="book-shop-link" href="${buy_links[1].url}" target="_blank"><svg class="book-shop-img apple-books-logo"><use href="${icon}#icon-ibooks"></use></svg></a></li>
-        </ul>
+        <ul class="book-shop-links">${linksMarkup}</ul>
         </div> 
         </div>
          <button class="shop-list-delete-btn" data-id="${_id}" aria-label="Remove book">

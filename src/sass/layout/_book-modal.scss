@@ -1,0 +1,43 @@
+.book-modal {
+  border-radius: 18px;
+  padding: 0;
+}
+.book-modal::backdrop {
+  background: rgba(17, 17, 17, 0.4);
+}
+.book-modal-wrapper {
+  padding: 40px;
+  width: 579px;
+  // для мобілки 335
+  position: relative;
+}
+.book-modal-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  // для мобілки
+  // top: 12px;
+  // right: 12px;
+}
+.book-modal-content {
+  display: flex;
+  gap: 24px;
+  // mobile
+  // flex-direction: column;
+  // gap: 14px;
+}
+.book-modal-cover {
+  width: 192px;
+  height: 281px;
+}
+ul {
+  // перенести обнулення стилів в глобальний файл!
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.book-modal-shops-list {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
