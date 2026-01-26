@@ -1,4 +1,4 @@
-
+// src/js/components/header-menu.js
 export function setActiveLinks() {
     const currentPath = window.location.pathname;
 
@@ -7,15 +7,20 @@ export function setActiveLinks() {
     );
 
     links.forEach(link => {
-        link.classList.remove('is-active');
+        link.classList.remove('active');
 
-        const linkPath = new URL(link.href).pathname;
+        let linkPath;
+        try {
+            linkPath = new URL(link.href, window.location.origin).pathname;
+        } catch (err) {
+            return;
+        }
 
         if (
             (linkPath === '/index.html' && (currentPath === '/' || currentPath === '/index.html')) ||
             linkPath === currentPath
         ) {
-            link.classList.add("active");
+            link.classList.add('active');
         }
     });
 }
