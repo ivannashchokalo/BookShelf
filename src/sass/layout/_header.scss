@@ -311,7 +311,7 @@
 .auth-close-svg {
     width: 20px;
     height: 20px;
-    stroke: var(--black);
+    stroke: var(--header-icon);
 }
 
 .auth-input {
@@ -329,6 +329,7 @@
     font-weight: 700;
     font-size: 16px;
     text-transform: uppercase;
+    color: var(--primary-text-color);
 }
 
 .auth-input-icon {
@@ -339,7 +340,7 @@
     width: 18px;
     height: 18px;
     stroke-width: 2px;
-    stroke: var(--black);
+    stroke: var(--header-icon);
     fill: none;
 }
 
@@ -384,7 +385,7 @@
     }
 
     .icon-shop {
-        fill: var(--black);
+        fill: var(--header-icon);
     }
 
     .header-logo {
@@ -420,6 +421,11 @@
     }
 
     .auth-input-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .auth-close-svg {
         width: 28px;
         height: 28px;
     }

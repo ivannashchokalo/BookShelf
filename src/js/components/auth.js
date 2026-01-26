@@ -1,4 +1,3 @@
-// js/components/auth.js
 import { setUser, clearUser } from '../utils/storage';
 
 export function initAuth({ onAuthChange }) {
@@ -10,34 +9,47 @@ export function initAuth({ onAuthChange }) {
     const mobLoginBtn = document.getElementById('mob-login-btn');
     const mobLogoutBtn = document.getElementById('mob-logout-btn');
 
-    if (!authForm) return;
+    if (!authForm || !authBackdrop) {
+        return {
+            logout() {
+                clearUser();
+                onAuthChange?.(null);
+            },
+        };
+    }
 
     const openAuth = () => {
         authBackdrop.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+        const nameInput = document.getElementById('auth-name');
+        nameInput?.focus();
+        document.addEventListener('keydown', onKeyDown);
     };
 
     const closeAuth = () => {
         authBackdrop.classList.add('hidden');
         document.body.style.overflow = '';
+        document.removeEventListener('keydown', onKeyDown);
     };
 
-    // відкриття модалки
     signUpBtn?.addEventListener('click', openAuth);
     mobLoginBtn?.addEventListener('click', openAuth);
 
-    // закриття модалки
     authCloseBtn?.addEventListener('click', closeAuth);
     authBackdrop?.addEventListener('click', e => {
         if (e.target === authBackdrop) closeAuth();
     });
+
+    const onKeyDown = (e) => {
+        if (e.key === 'Escape') closeAuth();
+    };
 
     // submit логіну
     authForm.addEventListener('submit', e => {
         e.preventDefault();
 
         const nameInput = document.getElementById('auth-name');
-        const name = nameInput.value.trim();
+        const name = nameInput?.value?.trim() || '';
 
         if (!name) return;
 
@@ -50,7 +62,7 @@ export function initAuth({ onAuthChange }) {
         authForm.reset();
     });
 
-    // logout
+    // logout (мобільна кнопка)
     mobLogoutBtn?.addEventListener('click', () => {
         clearUser();
         onAuthChange?.(null);
