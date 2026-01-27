@@ -5,7 +5,13 @@ import { initAuth } from './auth';
 import { setActiveLinks } from './header-menu';
 
 export function initHeader() {
+    // об'єкт користувача
     let currentUser = getUser();
+
+    if (!currentUser) {
+    setActiveLinks();
+}
+
 
     const desktopNav = document.getElementById('desktop-nav');
     const signUpBtn = document.getElementById('header-sign-up-btn');

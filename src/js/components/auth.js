@@ -9,14 +9,19 @@ export function initAuth({ onAuthChange }) {
     const mobLoginBtn = document.getElementById('mob-login-btn');
     const mobLogoutBtn = document.getElementById('mob-logout-btn');
 
+    // if (!authForm || !authBackdrop) {
+    //     return {
+    //         logout() {
+    //             clearUser();
+    //             onAuthChange?.(null);
+    //         },
+    //     };
+    // }
+
     if (!authForm || !authBackdrop) {
-        return {
-            logout() {
-                clearUser();
-                onAuthChange?.(null);
-            },
-        };
-    }
+    console.warn('Auth modal not found in DOM');
+}
+
 
     const openAuth = () => {
         authBackdrop.classList.remove('hidden');
@@ -68,10 +73,18 @@ export function initAuth({ onAuthChange }) {
         onAuthChange?.(null);
     });
 
-    return {
-        logout() {
-            clearUser();
-            onAuthChange?.(null);
-        },
-    };
+    // return {
+    //     logout() {
+    //         clearUser();
+    //         onAuthChange?.(null);
+    //     },
+    // };
+
+    const logout = () => {
+    clearUser();
+    onAuthChange?.(null);
+};
+
+return { logout };
+
 }
