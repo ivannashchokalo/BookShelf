@@ -1,38 +1,37 @@
-@use "../utils/mixins" as m;
+@use '../utils/mixins' as m;
 
 .shopping-list-books {
-    height: 100%;
+  height: 100%;
 }
 
 .list-empty {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
+//комент
 .list-empty-message {
-    max-width: 244px;
-    margin-bottom: 14px;
-    @include m.font($fs: 14px, $lh: 18px, $ls:-0.02em);
-    text-align: center;
-    color: var(--shopping-empty-list-color);
+  max-width: 244px;
+  margin-bottom: 14px;
+  @include m.font($fs: 14px, $lh: 18px, $ls: -0.02em);
+  text-align: center;
+  color: var(--shopping-empty-list-color);
 }
 
 @media screen and (min-width: 768px) {
-    .list-empty-message {
-        max-width: 350px;
-        margin-bottom: 20px;
-        @include m.font($fs: 18px, $lh: 18px, $ls:-0.02em);
-
-    }
+  .list-empty-message {
+    max-width: 350px;
+    margin-bottom: 20px;
+    @include m.font($fs: 18px, $lh: 18px, $ls: -0.02em);
+  }
 }
 
 .empty-list-hidden {
-    display: none;
+  display: none;
 }
 
 .list-empty-message-hidden {
-    display: none;
+  display: none;
 }

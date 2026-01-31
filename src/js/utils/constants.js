@@ -25,3 +25,4 @@ export const STATE = {
 };
 
 export const WISHLIST_KEY = 'wishlist';
+//комент

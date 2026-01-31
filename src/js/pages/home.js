@@ -9,3 +9,4 @@ export function initHome() {
   initBookModal();
   window.addEventListener('resize', handleHomeResize);
 }
+//комент

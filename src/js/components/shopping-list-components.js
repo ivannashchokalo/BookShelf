@@ -110,6 +110,8 @@ export function initShoppingListRemove() {
   });
 }
 
+//комент
+
 //Pagination//
 document.addEventListener("DOMContentLoaded", function() {
   const paginationContainer = document.getElementById('pagination');
