@@ -16,6 +16,7 @@ export const refs = {
     '.list-empty-message-shopping'
   ),
   emptyListMessageHome: document.querySelector('.list-empty-message-home'),
+   paginationElem: document.getElementById("pagination"),
 };
 
 export const STATE = {

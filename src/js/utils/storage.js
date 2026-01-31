@@ -15,3 +15,20 @@ export function loadFromLS(key) {
         return null;
     }
 }
+
+// Function by pagination//
+
+export function handleGetBtnClick() {
+  const itemCount = localStorage.length;
+  const downloadedBooks = [];
+
+  for (let i = 0; i < itemCount; i++) {
+    const key = localStorage.key(i);
+    const value = loadFromLS(key);
+
+    if (value._id) {
+      downloadedBooks.push(value);
+    }
+  }
+    return downloadedBooks;
+}

@@ -1,8 +1,12 @@
 import { refs, WISHLIST_KEY } from '../utils/constants';
-import { loadFromLS, saveToLS } from '../utils/storage';
+import { handleGetBtnClick, loadFromLS, saveToLS } from '../utils/storage';
 import { fetchBookById } from '../utils/books-api';
 import icon from '../../icons/symbol-defs.svg';
 import trash from '../../icons/symbol-defs.svg?url';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+
+
 
 export function getWishlist() {
   return loadFromLS(WISHLIST_KEY) || [];
@@ -104,4 +108,53 @@ export function initShoppingListRemove() {
     saveToLS(WISHLIST_KEY, nextIds);
     await renderShoppingList();
   });
+}
+
+//Pagination//
+document.addEventListener("DOMContentLoaded", function() {
+  const paginationContainer = document.getElementById('pagination');
+  const pagination = new Pagination(paginationContainer, {
+    totalItems: handleGetBtnClick().length,
+    itemsPerPage: window.innerWidth < 768 ? 4 : 3, 
+    visiblePages: 2,
+    centerAlign: true,
+  });
+
+  pagination.on('afterMove', function(event) {
+    const itemsPerPage = window.innerWidth < 768 ? 4 : 3;
+    pagination.setItemsPerPage(itemsPerPage);
+    renderWithPagination();
+  });
+});
+
+window.addEventListener("resize", onResize);
+
+function onResize() {
+  const targetPage = pagination.page;
+  pagination.movePageTo(targetPage);
+}
+
+function renderWithPagination() {
+    if (checkIfEmpty()) {
+        const currentPage = pagination.getCurrentPage();
+        const itemsPerPage = window.innerWidth < 768 ? 4 : 3;
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const booksToRender = handleGetBtnClick().slice(startIndex, endIndex);
+        renderShopList(booksToRender);
+    }
+}
+
+function checkIfEmpty() {
+  if (handleGetBtnClick().length === 0) {
+    refs.list.classList.add("is-hidden");
+    refs.paginationElem.classList.add("is-hidden");
+    refs.emptyList.classList.remove("is-hidden");
+    return false;
+  } else {
+    refs.list.classList.remove("is-hidden");
+    refs.emptyList.classList.add("is-hidden");
+    refs.paginationElem.classList.remove("is-hidden");
+    return true;
+  }
 }
