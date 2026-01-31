@@ -1,4 +1,4 @@
-import { fetchTopBooks } from '../utils/books-api';
+import { fetchBookByCategory, fetchTopBooks } from '../utils/books-api';
 import { refs, STATE } from '../utils/constants';
 import {
   getResponsiveCardsLimit,
@@ -65,4 +65,19 @@ function renderBookListCard({ _id, book_image, title, author }) {
 export function renderBooksListByCategory(category) {
   const markup = category.map(renderBookListCard).join('');
   refs.mainBookList.innerHTML = markup;
+}
+
+refs.mainBookList.addEventListener('click', onMoreBooksClick);
+async function onMoreBooksClick(e) {
+   const btn = e.target.closest('.more-books-btn');
+  if (!btn) return;
+
+  const category = btn.dataset.category; 
+ try {
+    const books = await fetchBookByCategory(category);
+    renderBooksListByCategory(books);
+  } catch (err) {
+    console.error(err);
+  }
+
 }
