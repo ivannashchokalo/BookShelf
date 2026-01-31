@@ -1,5 +1,5 @@
 import { refs, WISHLIST_KEY } from '../utils/constants';
-import { handleGetBtnClick, loadFromLS, saveToLS } from '../utils/storage';
+import { loadFromLS, saveToLS } from '../utils/storage';
 import { fetchBookById } from '../utils/books-api';
 import icon from '../../icons/symbol-defs.svg';
 import trash from '../../icons/symbol-defs.svg?url';
@@ -113,50 +113,74 @@ export function initShoppingListRemove() {
 //комент
 
 //Pagination//
-document.addEventListener("DOMContentLoaded", function() {
+let pagination;
+
+const getPerPage = () => (window.innerWidth < 768 ? 4 : 3);
+const getPaginationEl = () => refs.paginationElem ?? document.getElementById('pagination');
+
+document.addEventListener('DOMContentLoaded', () => {
   const paginationContainer = document.getElementById('pagination');
-  const pagination = new Pagination(paginationContainer, {
-    totalItems: handleGetBtnClick().length,
-    itemsPerPage: window.innerWidth < 768 ? 4 : 3, 
+  if (!paginationContainer) return;
+
+  const total = getWishlist().length;
+
+  pagination = new Pagination(paginationContainer, {
+    totalItems: total,
+    itemsPerPage: getPerPage(),
     visiblePages: 2,
     centerAlign: true,
   });
 
-  pagination.on('afterMove', function(event) {
-    const itemsPerPage = window.innerWidth < 768 ? 4 : 3;
-    pagination.setItemsPerPage(itemsPerPage);
+  pagination.on('afterMove', () => {
+    pagination.setItemsPerPage(getPerPage());
     renderWithPagination();
   });
+
+  window.addEventListener('resize', onResize);
+
+  renderWithPagination();
 });
 
-window.addEventListener("resize", onResize);
-
 function onResize() {
-  const targetPage = pagination.page;
-  pagination.movePageTo(targetPage);
+  if (!pagination) return;
+
+  const current = pagination.getCurrentPage();
+  pagination.setItemsPerPage(getPerPage());
+
+  pagination.reset(getWishlist().length);
+  pagination.movePageTo(current);
 }
 
-function renderWithPagination() {
-    if (checkIfEmpty()) {
-        const currentPage = pagination.getCurrentPage();
-        const itemsPerPage = window.innerWidth < 768 ? 4 : 3;
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        const booksToRender = handleGetBtnClick().slice(startIndex, endIndex);
-        renderShopList(booksToRender);
-    }
-}
+async function renderWithPagination() {
+  const ids = getWishlist();
+  const pagEl = getPaginationEl();
 
-function checkIfEmpty() {
-  if (handleGetBtnClick().length === 0) {
-    refs.list.classList.add("is-hidden");
-    refs.paginationElem.classList.add("is-hidden");
-    refs.emptyList.classList.remove("is-hidden");
-    return false;
-  } else {
-    refs.list.classList.remove("is-hidden");
-    refs.emptyList.classList.add("is-hidden");
-    refs.paginationElem.classList.remove("is-hidden");
-    return true;
+  if (!ids.length) {
+    showEmpty();
+    if (pagEl) pagEl.classList.add('is-hidden');
+    return;
   }
+
+  hideEmpty();
+  if (pagEl) pagEl.classList.remove('is-hidden');
+
+  const perPage = getPerPage();
+  const page = pagination.getCurrentPage();
+
+  const start = (page - 1) * perPage;
+  const sliceIds = ids.slice(start, start + perPage);
+
+  refs.list.innerHTML = '<li>Loading...</li>';
+
+  const results = await Promise.allSettled(sliceIds.map(fetchBookById));
+  const books = results
+    .filter(r => r.status === 'fulfilled' && r.value?._id)
+    .map(r => r.value);
+
+  if (!books.length) {
+    showEmpty();
+    return;
+  }
+
+  refs.list.innerHTML = books.map(bookCardTemplate).join('');
 }
