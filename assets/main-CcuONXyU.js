@@ -53,4 +53,4 @@ import{S as R,a as M,N as F}from"./vendor-D9UGMLfO.js";(function(){const t=docum
   <img src="${o}" alt="${e} logo" class="modal-book-logo"/>
   </a>
   </li>`}function We(e){e.preventDefault();const t=e.target.closest(".book-modal-btn");if(!t)return;const o=t.dataset.id;o&&(ze(o)?(xe(o),t.textContent="Add to shopping list"):(Ge(o),t.textContent="Remove from shopping list"))}function Ze(){Qe(),Ce(),Ve(),window.addEventListener("resize",Se)}function Je(){N(),Te(),B(),D(),window.addEventListener("resize",D)}const $e=document.body.dataset.page;switch($e){case"home":Ze();break;case"shopping-list":Je();break;default:console.log("Unknown page")}Be();le();we();
-//# sourceMappingURL=main-lODmOFWu.js.map
+//# sourceMappingURL=main-CcuONXyU.js.map
