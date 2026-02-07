@@ -3,6 +3,10 @@ import { loadFromLS, saveToLS } from '../utils/storage';
 import { fetchBookById } from '../utils/books-api';
 import icon from '../../icons/symbol-defs.svg';
 import trash from '../../icons/symbol-defs.svg?url';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+
+
 
 export function getWishlist() {
   return loadFromLS(WISHLIST_KEY) || [];
@@ -107,3 +111,76 @@ export function initShoppingListRemove() {
 }
 
 //комент
+
+//Pagination//
+let pagination;
+
+const getPerPage = () => (window.innerWidth < 768 ? 4 : 3);
+const getPaginationEl = () => refs.paginationElem ?? document.getElementById('pagination');
+
+document.addEventListener('DOMContentLoaded', () => {
+  const paginationContainer = document.getElementById('pagination');
+  if (!paginationContainer) return;
+
+  const total = getWishlist().length;
+
+  pagination = new Pagination(paginationContainer, {
+    totalItems: total,
+    itemsPerPage: getPerPage(),
+    visiblePages: 2,
+    centerAlign: true,
+  });
+
+  pagination.on('afterMove', () => {
+    pagination.setItemsPerPage(getPerPage());
+    renderWithPagination();
+  });
+
+  window.addEventListener('resize', onResize);
+
+  renderWithPagination();
+});
+
+function onResize() {
+  if (!pagination) return;
+
+  const current = pagination.getCurrentPage();
+  pagination.setItemsPerPage(getPerPage());
+
+  pagination.reset(getWishlist().length);
+  pagination.movePageTo(current);
+}
+
+async function renderWithPagination() {
+  const ids = getWishlist();
+  const pagEl = getPaginationEl();
+
+  if (!ids.length) {
+    showEmpty();
+    if (pagEl) pagEl.classList.add('is-hidden');
+    return;
+  }
+
+  hideEmpty();
+  if (pagEl) pagEl.classList.remove('is-hidden');
+
+  const perPage = getPerPage();
+  const page = pagination.getCurrentPage();
+
+  const start = (page - 1) * perPage;
+  const sliceIds = ids.slice(start, start + perPage);
+
+  refs.list.innerHTML = '<li>Loading...</li>';
+
+  const results = await Promise.allSettled(sliceIds.map(fetchBookById));
+  const books = results
+    .filter(r => r.status === 'fulfilled' && r.value?._id)
+    .map(r => r.value);
+
+  if (!books.length) {
+    showEmpty();
+    return;
+  }
+
+  refs.list.innerHTML = books.map(bookCardTemplate).join('');
+}

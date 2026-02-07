@@ -1,0 +1,137 @@
+#pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 0;
+
+    &.tui-pagination,
+    .tui-pagination {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+    }
+
+    .tui-page-btn {
+        min-width: 40px;
+        height: 40px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 12px;
+        border: 1px solid var(--pg-border);
+        background: var(--pg-surface);
+
+        color: var(--pg-text);
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1;
+        text-decoration: none;
+
+        transition:
+            background-color 150ms ease,
+            border-color 150ms ease,
+            box-shadow 150ms ease,
+            transform 150ms ease,
+            color 150ms ease;
+
+        &:hover {
+            background: var(--pg-surface-2);
+        }
+
+        &:active {
+            transform: translateY(1px);
+        }
+
+        &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 4px var(--pg-focus);
+            border-color: rgba(79, 46, 232, 0.55);
+        }
+
+        &.tui-is-selected {
+            background: var(--pg-accent);
+            border-color: var(--pg-accent);
+            color: var(--pg-accent-text);
+            box-shadow: var(--pg-shadow);
+        }
+
+        &.tui-is-disabled,
+        &[disabled] {
+            opacity: 0.35;
+            pointer-events: none;
+        }
+    }
+
+    /* Кнопки-стрілки: робимо видимі */
+    .tui-first,
+    .tui-prev,
+    .tui-next,
+    .tui-last {
+        font-size: 0;
+        /* прибрати можливий текст */
+        position: relative;
+
+        &::before {
+            font-size: 18px;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--pg-text);
+            /* <-- ключове */
+        }
+
+        &:hover::before {
+            color: var(--pg-text);
+        }
+    }
+
+    .tui-first::before {
+        content: '«';
+    }
+
+    .tui-prev::before {
+        content: '‹';
+    }
+
+    .tui-next::before {
+        content: '›';
+    }
+
+    .tui-last::before {
+        content: '»';
+    }
+
+    /* Ellipsis */
+    .tui-ellipsis {
+        min-width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        color: var(--pg-muted);
+        font-weight: 700;
+    }
+
+    @media (max-width: 767px) {
+        .tui-page-btn {
+            min-width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            font-size: 13px;
+        }
+    }
+}
+#pagination {
+    /* прибираємо вбудовані іконки tui (щоб не було 2х стрілок) */
+    .tui-first .tui-ico-first,
+    .tui-prev .tui-ico-prev,
+    .tui-next .tui-ico-next,
+    .tui-last .tui-ico-last {
+        display: none;
+    }
+
+}
